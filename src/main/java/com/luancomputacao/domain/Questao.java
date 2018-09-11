@@ -1,10 +1,13 @@
 package com.luancomputacao.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.aspectj.weaver.ast.Test;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -14,25 +17,91 @@ import java.util.Objects;
 @Table(name="questao")
 @EntityListeners(AuditingEntityListener.class)
 public class Questao implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
+
+
+    @Column(name = "criado_em", updatable = false)
+    @Temporal(TemporalType.DATE)
+    @CreatedDate
     private Date criadoEm;
+
+    @Column(name = "atualizado_em")
+    @Temporal(TemporalType.DATE)
+    @LastModifiedDate
     private Date atualizadoEm;
-    private Professor autor;
-    private Disciplina disciplina;
+
+    @Column(name = "enunciado")
     private String enunciado;
+
+    @Column(name = "espacos")
     private Integer espacos;
-    private FaseDeEnsino faseDeEnsino;
+
+    @Column(name = "invalidada")
     private Boolean invalidada;
-    private Collection<Materia> materias;
+
+    @Column(name = "nivel")
     private Float nivel;
-    private Collection<OpcaoDeQuestao> opcoesDeQuestao;
+
+    @Column(name = "publica")
     private Boolean publica;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonManagedReference
+    @JoinColumn(name = "id_autor", referencedColumnName = "id", updatable = false, nullable = false)
+    private Professor autor;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonManagedReference
+    @JoinColumn(name = "id_disciplina", referencedColumnName = "id", updatable = false, nullable = false)
+    private Disciplina disciplina;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonManagedReference
+    @JoinColumn(name = "id_fase_de_ensino", referencedColumnName = "id", updatable = false, nullable = false)
+    private FaseDeEnsino faseDeEnsino;
+
+    @OneToMany(mappedBy = "questao")
+    @JsonBackReference
+    private Collection<OpcaoDeQuestao> opcoesDeQuestao;
+
+    @OneToMany(mappedBy = "questao")
+    @JsonBackReference
+    private Collection<PropostaDeInvalidacao> propostasDeInvalidacao;
+
+    @OneToMany(mappedBy = "professor")
+    @JsonBackReference
+    private Collection<ProfessorUtilizaTeste> professorUtilizaTestes;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_de_questao")
     private Enum<TipoDeQuestao> tipoDeQuestaoEnum;
+
+    @ManyToMany
+    @JoinTable(
+            name = "materia_de_questao",
+            joinColumns = {@JoinColumn(name = "questao_id")},
+            inverseJoinColumns = {@JoinColumn(name = "materia_id")}
+    )
+    private Collection<Materia> materias;
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "questoes")
+    private Collection<Teste> testes;
+
+
+
 
     public Questao(Professor autor, Disciplina disciplina, Collection<Materia> materias, Enum<TipoDeQuestao> tipoDeQuestaoEnum) {
         this.autor = autor;
         this.disciplina = disciplina;
         this.materias = materias;
         this.tipoDeQuestaoEnum = tipoDeQuestaoEnum;
+        this.invalidada = false;
     }
 
     public Date getCriadoEm() {

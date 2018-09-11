@@ -1,11 +1,11 @@
 package com.luancomputacao.domain;
 
-import org.hibernate.annotations.Type;
-import org.hibernate.validator.constraints.Length;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -16,7 +16,7 @@ public class Professor implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id", length = 11)
+    @Column(name = "id")
     private Integer id;
 
     @Column(name = "cpf", length = 11, nullable = false, unique = true)
@@ -24,8 +24,34 @@ public class Professor implements Serializable {
 
     @Column(name = "nome", length = 128)
     private String nome;
+
+    @Column(name = "senha")
     private String senha;
+
+    @Column(name = "moderador")
     private Boolean moderador;
+
+    @OneToMany(mappedBy = "autor")
+    @JsonBackReference
+    private Collection<Questao> questoes;
+
+    @OneToMany(mappedBy = "teste")
+    @JsonBackReference
+    private Collection<ProfessorUtilizaTeste> professorUtilizaTestes;
+
+    @OneToMany(mappedBy = "professor")
+    @JsonBackReference
+    private Collection<PropostaDeInvalidacao> propostasDeInvalidacao;
+
+    @OneToMany(mappedBy = "moderador")
+    @JsonBackReference
+    private Collection<PropostaDeInvalidacao> propostasDeInvalidacaoModeradas;
+
+    @OneToMany(mappedBy = "autor")
+    @JsonBackReference
+    private Collection<Teste> testes;
+
+
 
     public Professor() { }
 
@@ -66,6 +92,14 @@ public class Professor implements Serializable {
 
     public void setModerador(Boolean moderador) {
         this.moderador = moderador;
+    }
+
+    public Collection<Questao> getQuestoes() {
+        return questoes;
+    }
+
+    public void setQuestoes(Collection<Questao> questoes) {
+        this.questoes = questoes;
     }
 
     @Override
