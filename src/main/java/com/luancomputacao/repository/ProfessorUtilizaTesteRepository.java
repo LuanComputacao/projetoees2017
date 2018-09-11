@@ -1,6 +1,9 @@
 package com.luancomputacao.repository;
 
 
-public class ProfessorUtilizaTesteRepository{
+import com.luancomputacao.domain.ProfessorUtilizaTeste;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ProfessorUtilizaTesteRepository extends JpaRepository<ProfessorUtilizaTeste, Integer> {
 
 }

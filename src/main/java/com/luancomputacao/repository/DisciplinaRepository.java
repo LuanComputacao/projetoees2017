@@ -1,5 +1,8 @@
 package com.luancomputacao.repository;
 
-public class DisciplinaRepository{
+import com.luancomputacao.domain.Disciplina;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface DisciplinaRepository extends JpaRepository<Disciplina, Integer> {
 
 }

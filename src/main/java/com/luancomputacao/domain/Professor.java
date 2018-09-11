@@ -51,10 +51,6 @@ public class Professor implements Serializable {
     @JsonBackReference
     private Collection<Teste> testes;
 
-
-
-    public Professor() { }
-
     public Professor(String cpf, String nome, String senha, Boolean moderador) {
         this.cpf = cpf;
         this.nome = nome;
