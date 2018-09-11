@@ -1,8 +1,17 @@
 package com.luancomputacao.domain;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class OpcaoDeQuestao {
+@Entity
+@Table(name="opcao_de_questao")
+@EntityListeners(AuditingEntityListener.class)
+public class OpcaoDeQuestao implements Serializable {
     private String texto;
 
     public OpcaoDeQuestao() {

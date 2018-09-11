@@ -1,8 +1,17 @@
 package com.luancomputacao.domain;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class FaseDeEnsino {
+@Entity
+@Table(name="fase_de_ensino ")
+@EntityListeners(AuditingEntityListener.class)
+public class FaseDeEnsino implements Serializable {
     private String nome;
 
     public FaseDeEnsino() {

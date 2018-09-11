@@ -1,9 +1,18 @@
 package com.luancomputacao.domain;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public class PropostaDeInvalidacao {
+@Entity
+@Table(name="proposta_de_invalidacao")
+@EntityListeners(AuditingEntityListener.class)
+public class PropostaDeInvalidacao implements Serializable {
     private Questao questao;
     private Professor professor;
     private Professor moderador;

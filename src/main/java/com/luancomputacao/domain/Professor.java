@@ -1,9 +1,28 @@
 package com.luancomputacao.domain;
 
+import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Professor {
+@Entity
+@Table(name="professor")
+@EntityListeners(AuditingEntityListener.class)
+public class Professor implements Serializable {
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id", length = 11)
+    private Integer id;
+
+    @Column(name = "cpf", length = 11, nullable = false, unique = true)
     private String cpf;
+
+    @Column(name = "nome", length = 128)
     private String nome;
     private String senha;
     private Boolean moderador;
