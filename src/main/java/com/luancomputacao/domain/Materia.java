@@ -1,22 +1,38 @@
 package com.luancomputacao.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.ManyToAny;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name="materia")
 @EntityListeners(AuditingEntityListener.class)
 public class Materia implements Serializable {
-    private Disciplina disciplina;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
+
+    @Column(name = "nome")
     private String nome;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_disciplina", referencedColumnName = "id", insertable = false, updatable = false)
+    @JsonManagedReference
+    private Disciplina disciplina;
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "materias")
+    private Collection<Questao> questoes;
+
     public Materia() {
-        this.disciplina = disciplina;
     }
 
     public Materia(Disciplina disciplina, String nome) {

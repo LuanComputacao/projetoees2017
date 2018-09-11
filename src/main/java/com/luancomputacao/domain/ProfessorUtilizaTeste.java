@@ -1,10 +1,10 @@
 package com.luancomputacao.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -13,8 +13,27 @@ import java.util.Objects;
 @Table(name="professor_utiliza_teste")
 @EntityListeners(AuditingEntityListener.class)
 public class ProfessorUtilizaTeste implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
+
+    @JoinColumn(name = "id_professor", referencedColumnName = "id", insertable = false, updatable = false)
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.LAZY)
     private Professor professor;
+
+    @JoinColumn(name = "id_teste", referencedColumnName = "id", insertable = false, updatable = false)
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.LAZY)
     private Teste teste;
+
+    @Column(name = "data_utilizacao", updatable = false)
+    @Temporal(TemporalType.DATE)
+    @CreatedDate
     private Date dataUtilizacao;
 
     public ProfessorUtilizaTeste(Professor professor, Teste teste) {

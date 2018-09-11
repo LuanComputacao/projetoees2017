@@ -1,15 +1,17 @@
 package com.luancomputacao.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Objects;
 
 
 @Entity
-@Table(name="disciplina")
+@Table(name = "disciplina")
 @EntityListeners(AuditingEntityListener.class)
 public class Disciplina implements Serializable {
 
@@ -17,12 +19,24 @@ public class Disciplina implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id", length = 11)
+    @Column(name = "id")
     private Integer id;
 
     @Column(name = "nome")
     @Length(max = 128)
     private String nome;
+
+    @OneToMany(mappedBy = "disciplina")
+    @JsonBackReference
+    private Collection<Materia> materias;
+
+    @OneToMany(mappedBy = "disciplina")
+    @JsonBackReference
+    private Collection<Questao> questoes;
+
+    @OneToMany(mappedBy = "disciplina")
+    @JsonBackReference
+    private Collection<Teste> testes;
 
     public Disciplina() {
     }
