@@ -1,10 +1,19 @@
 package com.luancomputacao.domain;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
 
-public class Questao {
+@Entity
+@Table(name="questao")
+@EntityListeners(AuditingEntityListener.class)
+public class Questao implements Serializable {
     private Date criadoEm;
     private Date atualizadoEm;
     private Professor autor;

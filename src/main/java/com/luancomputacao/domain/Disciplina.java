@@ -1,8 +1,27 @@
 package com.luancomputacao.domain;
 
+import org.hibernate.validator.constraints.Length;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Disciplina {
+
+@Entity
+@Table(name="disciplina")
+@EntityListeners(AuditingEntityListener.class)
+public class Disciplina implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id", length = 11)
+    private Integer id;
+
+    @Column(name = "nome")
+    @Length(max = 128)
     private String nome;
 
     public Disciplina() {

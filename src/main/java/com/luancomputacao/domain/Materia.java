@@ -1,8 +1,17 @@
 package com.luancomputacao.domain;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Materia {
+@Entity
+@Table(name="materia")
+@EntityListeners(AuditingEntityListener.class)
+public class Materia implements Serializable {
     private Disciplina disciplina;
     private String nome;
 
