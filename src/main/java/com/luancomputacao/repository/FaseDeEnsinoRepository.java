@@ -1,5 +1,8 @@
 package com.luancomputacao.repository;
 
-public class FaseDeEnsinoRepository{
+import com.luancomputacao.domain.FaseDeEnsino;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface FaseDeEnsinoRepository extends JpaRepository<FaseDeEnsino, Integer> {
 
 }
