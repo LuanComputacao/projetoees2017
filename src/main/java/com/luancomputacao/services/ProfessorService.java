@@ -9,13 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProfessorService {
 
-    private final
-    ProfessorRepository professorRepository;
-
     @Autowired
-    public ProfessorService(ProfessorRepository professorRepository) {
-        this.professorRepository = professorRepository;
-    }
+    ProfessorRepository professorRepository;
 
     /**
      * Avalia se o Nome é válido
