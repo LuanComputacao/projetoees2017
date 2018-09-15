@@ -2,35 +2,72 @@ package com.luancomputacao.services;
 
 import com.luancomputacao.domain.Professor;
 import com.luancomputacao.repository.ProfessorRepository;
+import com.luancomputacao.utils.CPF;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ProfessorService {
 
-    @Autowired
+    private final
     ProfessorRepository professorRepository;
 
-    private Boolean verificaDados(String cpf, String nome, String senha) {
-        Boolean valido = true;
+    @Autowired
+    public ProfessorService(ProfessorRepository professorRepository) {
+        this.professorRepository = professorRepository;
+    }
 
-        // CPF
-        if (cpf.equals("") || cpf.length() < 11) valido = false;
+    /**
+     * Avalia se o Nome é válido
+     *
+     * - mais de um caractere válido
+     *
+     * @param nome Nome para avaliação
+     * @return Verdadeiro se válido
+     */
+    Boolean validaNome(String nome) {
+        return nome.length() > 1;
+    }
 
-        // Nome
-        if (nome.equals("") || nome.length() < 2) valido = false;
+    /**
+     * Verifica se o CPF é válido ou não
+     *
+     * @param cpf CPF para ser avaliado
+     * @return Verdadeiro se válido
+     */
+    Boolean validaCpf(String cpf) {
+        return CPF.isCPF(cpf);
+    }
 
-        // Senha
-        if (!(senha.equals("") || senha.matches("\"^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$\"")))
-            valido = false;
-
-        return valido;
+    /**
+     * Avalia se a senha obedece os padrões de segurança requeridos
+     *
+     * Deve conter
+     *  - maiúsculas
+     *  - minúsculas
+     *  - algum dos caracteres .@#$%^&+=
+     *  - 8 dígitos ou mais
+     *
+     * @param senha Senha para validação
+     * @return Verdadeiro se válida
+     */
+    Boolean validaSenha(String senha) {
+        return (senha.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[._@#$%^&+=])(?=\\S+$).{8,}$"));
     }
 
 
-    public Boolean realizarLogin() {
-        return true;
+    /**
+     * Verifica se os dados são validos para a criação do Professor
+     *
+     * @param cpf CPF para validação
+     * @param nome Nome do Professor para validação
+     * @param senha Senha do Professor para validação
+     * @return Verdadeiro se todos os dados forem validos
+     */
+    Boolean verificaDados(String cpf, String nome, String senha) {
+        return (this.validaCpf(cpf) && this.validaNome(nome) && this.validaSenha(senha));
     }
+
 
     public Professor criarModerador(String cpf, String nome, String senha) {
         if (verificaDados(cpf, nome, senha)) {
