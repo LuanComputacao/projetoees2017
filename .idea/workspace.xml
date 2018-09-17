@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="95330040-8395-4d4c-9ec6-3463caaf4f10" name="Default Changelist" comment="ProfessorService testado&#10;CpfUtils testado&#10;circle.ci atualizado">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/luancomputacao/dto/ProfessorDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/luancomputacao/resource/ProfessorResource.java" afterDir="false" />
+    <list default="true" id="95330040-8395-4d4c-9ec6-3463caaf4f10" name="Default Changelist" comment="banco em memória&#10;ProfessorDTO&#10;ProfessorResource&#10;update ProfessorService&#10;criando algumas coisas no início">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/luancomputacao/MrXavierApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/luancomputacao/MrXavierApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/luancomputacao/domain/Professor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/luancomputacao/domain/Professor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/luancomputacao/domain/Questao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/luancomputacao/domain/Questao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/luancomputacao/services/ProfessorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/luancomputacao/services/ProfessorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -86,8 +80,8 @@
           <file leaf-file-name="ProfessorResource.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/luancomputacao/resource/ProfessorResource.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
-                  <caret line="21" column="72" selection-start-line="21" selection-start-column="72" selection-end-line="21" selection-end-column="72" />
+                <state relative-caret-position="345">
+                  <caret line="23" column="53" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -223,11 +217,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Professor.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Professor.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/luancomputacao/domain/Professor.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-405">
-                  <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+                <state relative-caret-position="585">
+                  <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#1723#1724#0" expanded="true" />
@@ -253,6 +247,15 @@
                     <element signature="e#2812#2813#0" expanded="true" />
                     <element signature="e#2873#2874#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/.travis.yml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="405">
+                  <caret line="27" column="2" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
                 </state>
               </provider>
             </entry>
@@ -317,7 +320,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/luancomputacao/domain/interfaces/Questao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/luancomputacao/domain/interfaces/Disciplina.java" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/src/main/java/com/luancomputacao/domain/OpcaoDeQuestao.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/luancomputacao/domain/ProfessorUtilizaTeste.java" />
@@ -358,6 +360,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/luancomputacao/MrXavierApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/luancomputacao/dto/ProfessorDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/luancomputacao/resource/ProfessorResource.java" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
       </list>
     </option>
   </component>
@@ -426,57 +429,6 @@
               <item name="projetoees2017" type="b2602c69:ProjectViewProjectNode" />
               <item name="projetoees2017" type="462c0819:PsiDirectoryNode" />
               <item name=".circleci" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projetoees2017" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projetoees2017" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projetoees2017" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projetoees2017" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projetoees2017" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projetoees2017" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projetoees2017" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projetoees2017" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="luancomputacao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projetoees2017" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projetoees2017" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="luancomputacao" type="462c0819:PsiDirectoryNode" />
-              <item name="dto" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projetoees2017" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projetoees2017" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="luancomputacao" type="462c0819:PsiDirectoryNode" />
-              <item name="resource" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projetoees2017" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projetoees2017" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -685,7 +637,7 @@
       <workItem from="1536807305933" duration="216000" />
       <workItem from="1537023733805" duration="10120000" />
       <workItem from="1537117774454" duration="6819000" />
-      <workItem from="1537132841294" duration="17302000" />
+      <workItem from="1537132841294" duration="17942000" />
     </task>
     <task id="LOCAL-00001" summary="Models creation">
       <created>1536641745931</created>
@@ -736,7 +688,14 @@
       <option name="project" value="LOCAL" />
       <updated>1537153242672</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="banco em memória&#10;ProfessorDTO&#10;ProfessorResource&#10;update ProfessorService&#10;criando algumas coisas no início">
+      <created>1537160803092</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1537160803092</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -772,7 +731,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65053000" />
+    <option name="totallyTimeSpent" value="65693000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -876,16 +835,10 @@
     <MESSAGE value="new commit" />
     <MESSAGE value="Testes de validação de dados do professor" />
     <MESSAGE value="ProfessorService testado&#10;CpfUtils testado&#10;circle.ci atualizado" />
-    <option name="LAST_COMMIT_MESSAGE" value="ProfessorService testado&#10;CpfUtils testado&#10;circle.ci atualizado" />
+    <MESSAGE value="banco em memória&#10;ProfessorDTO&#10;ProfessorResource&#10;update ProfessorService&#10;criando algumas coisas no início" />
+    <option name="LAST_COMMIT_MESSAGE" value="banco em memória&#10;ProfessorDTO&#10;ProfessorResource&#10;update ProfessorService&#10;criando algumas coisas no início" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luancomputacao/domain/OpcaoDeQuestao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="22" column="25" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/luancomputacao/domain/FaseDeEnsino.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -1270,10 +1223,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luancomputacao/MrXavierApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luancomputacao/dto/ProfessorDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#173#174#0" expanded="true" />
+            <element signature="e#199#200#0" expanded="true" />
+            <element signature="e#237#238#0" expanded="true" />
+            <element signature="e#267#268#0" expanded="true" />
+            <element signature="e#298#299#0" expanded="true" />
+            <element signature="e#325#326#0" expanded="true" />
+            <element signature="e#365#366#0" expanded="true" />
+            <element signature="e#397#398#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luancomputacao/resource/ProfessorResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="53" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/luancomputacao/domain/Professor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-405">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="585">
+          <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1723#1724#0" expanded="true" />
@@ -1302,38 +1290,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luancomputacao/MrXavierApplication.java">
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luancomputacao/dto/ProfessorDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#173#174#0" expanded="true" />
-            <element signature="e#199#200#0" expanded="true" />
-            <element signature="e#237#238#0" expanded="true" />
-            <element signature="e#267#268#0" expanded="true" />
-            <element signature="e#298#299#0" expanded="true" />
-            <element signature="e#325#326#0" expanded="true" />
-            <element signature="e#365#366#0" expanded="true" />
-            <element signature="e#397#398#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luancomputacao/resource/ProfessorResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="72" selection-start-line="21" selection-start-column="72" selection-end-line="21" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="405">
+          <caret line="27" column="2" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
         </state>
       </provider>
     </entry>
