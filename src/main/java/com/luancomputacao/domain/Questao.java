@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name="questao")
+@Table(name = "questao")
 @EntityListeners(AuditingEntityListener.class)
 public class Questao implements Serializable {
 
@@ -93,8 +93,9 @@ public class Questao implements Serializable {
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "questoes")
     private Collection<Teste> testes;
 
+    public Questao() {
 
-
+    }
 
     public Questao(Professor autor, Disciplina disciplina, Collection<Materia> materias, Enum<TipoDeQuestao> tipoDeQuestaoEnum) {
         this.autor = autor;
