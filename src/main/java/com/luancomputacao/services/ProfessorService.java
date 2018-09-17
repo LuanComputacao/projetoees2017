@@ -2,7 +2,7 @@ package com.luancomputacao.services;
 
 import com.luancomputacao.domain.Professor;
 import com.luancomputacao.repository.ProfessorRepository;
-import com.luancomputacao.utils.CPF;
+import com.luancomputacao.utils.CpfUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +31,7 @@ public class ProfessorService {
      * @return Verdadeiro se válido
      */
     Boolean validaCpf(String cpf) {
-        return CPF.isCPF(cpf);
+        return CpfUtils.isCPF(cpf);
     }
 
     /**
@@ -40,7 +40,7 @@ public class ProfessorService {
      * Deve conter
      *  - maiúsculas
      *  - minúsculas
-     *  - algum dos caracteres .@#$%^&+=
+     *  - algum dos caracteres ._@#$%^&+=
      *  - 8 dígitos ou mais
      *
      * @param senha Senha para validação
@@ -64,6 +64,14 @@ public class ProfessorService {
     }
 
 
+    /**
+     * Cria um Professor do tipo Moderador
+     *
+     * @param cpf CPF para o Professor
+     * @param nome Nome para o Professor
+     * @param senha Senha para o Professor
+     * @return Novo objeto do tipo professor ou nulo se falhar
+     */
     public Professor criarModerador(String cpf, String nome, String senha) {
         if (verificaDados(cpf, nome, senha)) {
             Professor professor = new Professor(cpf, nome, senha, true);
@@ -72,6 +80,14 @@ public class ProfessorService {
         return null;
     }
 
+    /**
+     * Cria um Professor não moderador
+     *
+     * @param cpf CPF para o Professor
+     * @param nome Nome para o Professor
+     * @param senha Senha para o Professor
+     * @return Novo objeto do tipo professor ou nulo se falhar
+     */
     public Professor criarProfessor(String cpf, String nome, String senha) {
         if (verificaDados(cpf, nome, senha)) {
             Professor professor = new Professor(cpf, nome, senha, false);
