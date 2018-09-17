@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name="professor")
+@Table(name = "professor")
 @EntityListeners(AuditingEntityListener.class)
 public class Professor implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -50,6 +50,10 @@ public class Professor implements Serializable {
     @OneToMany(mappedBy = "autor")
     @JsonBackReference
     private Collection<Teste> testes;
+
+    public Professor() {
+
+    }
 
     public Professor(String cpf, String nome, String senha, Boolean moderador) {
         this.cpf = cpf;

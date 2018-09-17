@@ -6,6 +6,9 @@ import com.luancomputacao.utils.CpfUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class ProfessorService {
 
@@ -94,5 +97,15 @@ public class ProfessorService {
             return professorRepository.save(professor);
         }
         return null;
+    }
+
+
+    public Professor encontrar(Integer id) {
+        Optional<Professor> professor =  professorRepository.findById(id);
+        return professor.orElse(null);
+    }
+
+    public List<Professor> listar() {
+        return professorRepository.findAll();
     }
 }
