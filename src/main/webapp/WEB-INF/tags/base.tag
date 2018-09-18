@@ -47,7 +47,7 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link js-clientes" href="<c:url value="/professores"/>"><span data-feather="users"></span>Clientes</a>
+                        <a class="nav-link js-clientes" href="<c:url value="/professores"/>"><span data-feather="users"></span>Professores</a>
                     </li>
                 </ul>
             </div>
