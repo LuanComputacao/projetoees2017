@@ -1,4 +1,4 @@
-package com.luancomputacao.resource;
+package com.luancomputacao.resource.rest;
 
 import com.luancomputacao.domain.Professor;
 import com.luancomputacao.dto.ProfessorDTO;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(value = "/professores")
+@RequestMapping(value = "/rest/professores")
 public class ProfessorResource {
 
     @Autowired
