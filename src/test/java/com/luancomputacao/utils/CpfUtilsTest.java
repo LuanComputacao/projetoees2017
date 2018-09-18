@@ -5,11 +5,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.InputMismatchException;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
-
 public class CpfUtilsTest {
 
     private String cpfValido = "70481563172";

@@ -1,7 +1,6 @@
 package com.luancomputacao.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.hibernate.annotations.ManyToAny;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -10,7 +9,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name="materia")
+@Table(name = "materia")
 @EntityListeners(AuditingEntityListener.class)
 public class Materia implements Serializable {
 

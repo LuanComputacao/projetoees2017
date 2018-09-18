@@ -3,7 +3,7 @@ package com.luancomputacao.utils;
 import java.util.InputMismatchException;
 
 public class CpfUtils {
-    public static boolean isCPF(String CPF) throws InputMismatchException{
+    public static boolean isCPF(String CPF) throws InputMismatchException {
         // considera-se erro CPF's formados por uma sequencia de numeros iguais
         if (CPF.equals("00000000000") ||
                 CPF.equals("11111111111") ||
