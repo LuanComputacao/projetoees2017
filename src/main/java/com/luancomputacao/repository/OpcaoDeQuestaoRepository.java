@@ -1,5 +1,5 @@
 package com.luancomputacao.repository;
 
-public interface OpcaoDeQuestaoRepository{
+public interface OpcaoDeQuestaoRepository {
 
 }

@@ -12,7 +12,7 @@ import java.util.Collection;
 import java.util.Date;
 
 @Entity
-@Table(name="teste")
+@Table(name = "teste")
 @EntityListeners(AuditingEntityListener.class)
 public class Teste implements Serializable {
     private static final long serialVersionUID = 1L;

@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name="opcao_de_questao")
+@Table(name = "opcao_de_questao")
 @EntityListeners(AuditingEntityListener.class)
 public class OpcaoDeQuestao implements Serializable {
     private static final long serialVersionUID = 1L;

@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name="fase_de_ensino ")
+@Table(name = "fase_de_ensino ")
 @EntityListeners(AuditingEntityListener.class)
 public class FaseDeEnsino implements Serializable {
     private static final long serialVersionUID = 1L;

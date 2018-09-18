@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProfessorService {
@@ -17,7 +16,7 @@ public class ProfessorService {
 
     /**
      * Avalia se o Nome é válido
-     *
+     * <p>
      * - mais de um caractere válido
      *
      * @param nome Nome para avaliação
@@ -39,12 +38,12 @@ public class ProfessorService {
 
     /**
      * Avalia se a senha obedece os padrões de segurança requeridos
-     *
+     * <p>
      * Deve conter
-     *  - maiúsculas
-     *  - minúsculas
-     *  - algum dos caracteres ._@#$%^&+=
-     *  - 8 dígitos ou mais
+     * - maiúsculas
+     * - minúsculas
+     * - algum dos caracteres ._@#$%^&+=
+     * - 8 dígitos ou mais
      *
      * @param senha Senha para validação
      * @return Verdadeiro se válida
@@ -57,8 +56,8 @@ public class ProfessorService {
     /**
      * Verifica se os dados são validos para a criação do Professor
      *
-     * @param cpf CPF para validação
-     * @param nome Nome do Professor para validação
+     * @param cpf   CPF para validação
+     * @param nome  Nome do Professor para validação
      * @param senha Senha do Professor para validação
      * @return Verdadeiro se todos os dados forem validos
      */
@@ -70,8 +69,8 @@ public class ProfessorService {
     /**
      * Cria um Professor do tipo Moderador
      *
-     * @param cpf CPF para o Professor
-     * @param nome Nome para o Professor
+     * @param cpf   CPF para o Professor
+     * @param nome  Nome para o Professor
      * @param senha Senha para o Professor
      * @return Novo objeto do tipo professor ou nulo se falhar
      */
@@ -86,8 +85,8 @@ public class ProfessorService {
     /**
      * Cria um Professor não moderador
      *
-     * @param cpf CPF para o Professor
-     * @param nome Nome para o Professor
+     * @param cpf   CPF para o Professor
+     * @param nome  Nome para o Professor
      * @param senha Senha para o Professor
      * @return Novo objeto do tipo professor ou nulo se falhar
      */
@@ -101,10 +100,14 @@ public class ProfessorService {
 
 
     public Professor encontrar(Integer id) {
-        Optional<Professor> professor =  professorRepository.findById(id);
-        return professor.orElse(null);
+        return professorRepository.findById(id).orElse(null);
     }
 
+    /**
+     * Lista todos os professores
+     *
+     * @return Lista de Professores
+     */
     public List<Professor> listar() {
         return professorRepository.findAll();
     }

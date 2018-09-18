@@ -2,7 +2,6 @@ package com.luancomputacao.services;
 
 import com.luancomputacao.domain.Professor;
 import com.luancomputacao.repository.ProfessorRepository;
-import org.hibernate.SessionFactory;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -10,10 +9,8 @@ import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.hamcrest.Matchers.instanceOf;

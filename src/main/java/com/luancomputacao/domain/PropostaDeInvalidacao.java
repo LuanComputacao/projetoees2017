@@ -1,6 +1,5 @@
 package com.luancomputacao.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -12,7 +11,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name="proposta_de_invalidacao")
+@Table(name = "proposta_de_invalidacao")
 @EntityListeners(AuditingEntityListener.class)
 public class PropostaDeInvalidacao implements Serializable {
 
