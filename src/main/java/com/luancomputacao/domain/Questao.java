@@ -78,9 +78,9 @@ public class Questao implements Serializable {
     @JsonBackReference
     private Collection<ProfessorUtilizaTeste> professorUtilizaTestes;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "tipo_de_questao")
-    private Enum<TipoDeQuestao> tipoDeQuestaoEnum;
+    private TipoDeQuestao tipoDeQuestaoEnum;
 
     @ManyToMany
     @JoinTable(
@@ -97,7 +97,7 @@ public class Questao implements Serializable {
 
     }
 
-    public Questao(Professor autor, Disciplina disciplina, Collection<Materia> materias, Enum<TipoDeQuestao> tipoDeQuestaoEnum) {
+    public Questao(Professor autor, Disciplina disciplina, Collection<Materia> materias, TipoDeQuestao tipoDeQuestaoEnum) {
         this.autor = autor;
         this.disciplina = disciplina;
         this.materias = materias;
@@ -205,7 +205,7 @@ public class Questao implements Serializable {
         return tipoDeQuestaoEnum;
     }
 
-    public void setTipoDeQuestaoEnum(Enum<TipoDeQuestao> tipoDeQuestaoEnum) {
+    public void setTipoDeQuestaoEnum(TipoDeQuestao tipoDeQuestaoEnum) {
         this.tipoDeQuestaoEnum = tipoDeQuestaoEnum;
     }
 

@@ -1,18 +1,26 @@
 package com.luancomputacao.domain;
 
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.Table;
-import java.io.Serializable;
-
-public enum  TipoDeQuestao implements Serializable {
+public enum TipoDeQuestao {
     DISCURSIVA(1), OBJETIVA(2);
 
-    private int tipoDeQuestao;
+    private final int tipoDeQuestao;
 
     TipoDeQuestao(int i) {
-        tipoDeQuestao = i;
+        this.tipoDeQuestao = i;
+    }
+
+    public int getTipoDeQuestao() {
+        return tipoDeQuestao;
+    }
+
+    public static TipoDeQuestao fromNumber(int number) {
+        switch (number) {
+            case 1:
+                return TipoDeQuestao.DISCURSIVA;
+            case 2:
+                return TipoDeQuestao.OBJETIVA;
+            default:
+                return TipoDeQuestao.OBJETIVA;
+        }
     }
 }
