@@ -221,3 +221,5 @@ local.properties
 .scala_dependencies
 .worksheet
 
+# Front-end distribution files
+/static/dist
