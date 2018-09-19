@@ -23,8 +23,7 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta charset="UTF-8">
-    <link href="<c:url value="/webjars/bootstrap/4.0.0/css/bootstrap.min.css"/>" rel="stylesheet" media="screen"/>
-    <link href="<c:url value="/static/css/dashboard.css"/>" rel="stylesheet" media="screen">
+    <link href="<c:url value="/static/dist/bundle.js"/>" rel="stylesheet" media="screen">
 
     <jsp:invoke fragment="cssLinks"/>
 

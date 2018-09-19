@@ -6,9 +6,8 @@ var devMode = process.env.NODE_ENV !== 'production';
 module.exports = {
     mode: "development",
     entry: [
-        './src/main/js/main.js',
+        './src/main/js/app.js',
         './src/main/css/style.scss',
-
         ],
     output: {
         path: path.resolve(__dirname, './src/main/webapp/static/dist'),
