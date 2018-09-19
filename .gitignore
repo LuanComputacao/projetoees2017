@@ -222,4 +222,4 @@ local.properties
 .worksheet
 
 # Front-end distribution files
-static/dist/**
+/src/main/webapp/static/dist/
