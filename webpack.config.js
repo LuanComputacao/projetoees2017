@@ -2,7 +2,6 @@ var webpack = require('webpack');
 var path = require('path');
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var devMode = process.env.NODE_ENV !== 'production';
-devMode = true;
 
 module.exports = {
     mode: "development",
@@ -30,7 +29,6 @@ module.exports = {
                 use: [
                     devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
                     'css-loader',
-                    'postcss-loader',
                     'sass-loader'
                 ],
             },
