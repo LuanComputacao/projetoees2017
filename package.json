@@ -1,0 +1,32 @@
+{
+  "name": "mr_xavier__banco_de_questoes",
+  "version": "1.0.0",
+  "description": "Mr. Xavier - Banco de Questões",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "npm run build -- --watch"
+  },
+  "author": "Luan Roger Santos Santana",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "~4.1.3",
+    "feather-icons": "~4.7.3",
+    "jquery": "~3.3.1",
+    "popper.js": "~1.14.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.2",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "~6.24.1",
+    "css-loader": "~1.0.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "mini-css-extract-plugin": "^0.4.3",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "style-loader": "~0.23.0",
+    "webpack": "^4.19.1",
+    "webpack-cli": "~3.1.0"
+  }
+}
