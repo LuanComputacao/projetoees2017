@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="lc" uri="http://luancomputacao.com" %>
 <%@tag description="Página Generica" pageEncoding="utf-8" %>
 
 <%--Assets--%>
@@ -23,10 +24,9 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta charset="UTF-8">
-    <link href="<c:url value="/static/dist/bundle.js"/>" rel="stylesheet" media="screen">
 
+    <lc:WebpackManifest staticDistPath="/static/dist"/>
     <jsp:invoke fragment="cssLinks"/>
-
 </head>
 
 
@@ -71,18 +71,6 @@
         </div>
     </main>
 </div>
-
-
-
-
-
-<script src="<c:url value="/webjars/jquery/3.3.1/jquery.min.js"/>"></script>
-<script src="<c:url value="/static/js/base.js"/>"></script>
-<script src="<c:url value="/static/js/sidebar.js"/>"></script>
-
-<script src="<c:url value="/webjars/popper.js"/>"></script>
-<script src="<c:url value="/webjars/bootstrap/4.0.0/js/bootstrap.min.js"/>"></script>
-<script src="<c:url value="/static/node_modules/feather-icons/dist/feather.min.js"/>"></script>
 
 <jsp:invoke fragment="jsFooter"/>
 </body>
