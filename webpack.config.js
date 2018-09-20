@@ -30,17 +30,17 @@ module.exports = {
             minimize: !devMode
         }),
 
-        new CleanWebPackPlugin(['dist'], {
-                root: path.join(__dirname, 'src/main/webapp/static'),
-                verbose: true,
-                dry: false
-            }
-        ),
+        // new CleanWebPackPlugin(['dist'], {
+        //         root: path.join(__dirname, 'src/main/webapp/static'),
+        //         verbose: true,
+        //         dry: false
+        //     }
+        // ),
 
         function () {
             this.plugin('done', stats =>{
                 require('fs').writeFileSync(
-                    path.join(__dirname, 'src/main/resources/webpack.manifest.json'),
+                    path.join(__dirname, 'src/main/webapp/static/dist/webpack.manifest.json'),
                     JSON.stringify(stats.toJson().assetsByChunkName)
                 )
             })
@@ -90,9 +90,3 @@ module.exports = {
         ]
     }
 };
-
-if (!devMode) {
-    module.exports.plugins.push(
-        new webpack.optimize.UglifyJsPlugin()
-    );
-}
