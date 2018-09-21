@@ -16,7 +16,7 @@ public class ProfessorService {
 
     /**
      * Avalia se o Nome é válido
-     * <p>
+     *
      * - mais de um caractere válido
      *
      * @param nome Nome para avaliação
