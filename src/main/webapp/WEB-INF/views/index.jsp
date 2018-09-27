@@ -3,10 +3,19 @@
 
 
 <tp:base>
-    <jsp:attribute name="title">Mr. Xavier - Banco de Questões</jsp:attribute>
-    <jsp:attribute name="subtitle">Bem vindo</jsp:attribute>
     <jsp:attribute name="body">
-        Utilize os links ao lado para navegar
+        <%--Se não estiver autenticado--%>
+        <c:if test=" ${!professor}">
+            <jsp:include page="partials/professor/login.jsp"/>
+        </c:if>
+
+        <%--Se estiver autenticado como professor--%>
+        <c:if test="${true}">
+        </c:if>
+
+        <%--Se estiver autenticado como professor moderador--%>
+        <c:if test="${true}">
+        </c:if>
     </jsp:attribute>
 </tp:base>
 
