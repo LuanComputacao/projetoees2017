@@ -31,40 +31,41 @@
 
 
 <body>
-<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 navbar-top">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="<c:url value="/"/>">
-        <jsp:invoke fragment="title"/>
-    </a>
-    <div class="col-md-10 navbar-top__title">
-        <h1 class="h2"><jsp:invoke fragment="subtitle"/></h1>
-    </div>
-</nav>
-
 <div class="container-fluid">
     <div class="row">
-        <nav id="js-sidebar" class="col-md-2 d-none d-md-block bg-light sidebar" data-navbar="<jsp:invoke fragment="navbar"/>">
-            <div class="sidebar-sticky">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link js-clientes" href="<c:url value="/professores"/>"><span data-feather="users"></span>Professores</a>
-                    </li>
-                </ul>
-            </div>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark col">
+            <a class="navbar-brand" href="#">Mr. Xavier - Banco de Questões</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <c:if test="${professor}">
+                <div class="collapse navbar-collapse" id="navbarsExample04">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Questões</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Testes</a>
+                        </li>
+                        <c:if test="${moderador}">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#">Propostas de Invalidações</a>
+                            </li>
+                        </c:if>
+                    </ul>
+                </div>
+            </c:if>
         </nav>
     </div>
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4" id="js-main">
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <div class="btn-toolbar mb-2 mb-md-0">
-                <jsp:invoke fragment="btnToolbar"/>
-            </div>
-        </div>
-
-        <div class="row">
+    <main role="main" class="row" id="js-main">
             <div class="col" id="">
                 <jsp:invoke fragment="body"/>
             </div>
-        </div>
 
         <div class="row">
             <jsp:invoke fragment="footer"/>

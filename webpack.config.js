@@ -25,10 +25,10 @@ module.exports = {
             chunkFilename: devMode ? '[id].css' : '[id].[chunkhash].css',
         }),
 
-        new PurifyCSSPlugin({
-            paths: glob.sync(path.join(__dirname, 'src/main/webapp/WEB-INF/**/*.(jsp|tag)')),
-            minimize: !devMode
-        }),
+        // new PurifyCSSPlugin({
+        //     paths: glob.sync(path.join(__dirname, 'src/main/webapp/WEB-INF/**/*.(jsp|tag)')),
+        //     minimize: !devMode
+        // }),
 
         // new CleanWebPackPlugin(['dist'], {
         //         root: path.join(__dirname, 'src/main/webapp/static'),
