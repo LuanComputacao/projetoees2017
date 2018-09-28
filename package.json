@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack",
     "prod": "NODE_ENV=production webpack",
-    "watch": "npm run build -- --watch"
+    "watch": "npm run dev -- --watch"
   },
   "author": "Luan Roger Santos Santana",
   "license": "ISC",
@@ -26,6 +26,7 @@
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "~1.0.0",
     "file-loader": "^2.0.0",
+    "glob-all": "^3.1.0",
     "mini-css-extract-plugin": "^0.4.3",
     "node-sass": "^4.9.3",
     "postcss-loader": "^3.0.0",

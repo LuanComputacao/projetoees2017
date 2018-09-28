@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
-var glob = require('glob');
+var glob = require('glob-all');
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var PurifyCSSPlugin = require('purifycss-webpack');
 var CleanWebPackPlugin = require('clean-webpack-plugin');
@@ -9,8 +9,8 @@ var devMode = process.env.NODE_ENV !== 'production';
 module.exports = {
     mode: devMode ? "development" : "production",
     entry: [
-        './src/main/js/app.js',
-        './src/main/css/app.scss',
+        './src/main/assets/js/app.js',
+        './src/main/assets/css/app.scss',
     ],
 
     output: {
@@ -25,17 +25,23 @@ module.exports = {
             chunkFilename: devMode ? '[id].css' : '[id].[chunkhash].css',
         }),
 
-        // new PurifyCSSPlugin({
-        //     paths: glob.sync(path.join(__dirname, 'src/main/webapp/WEB-INF/**/*.(jsp|tag)')),
-        //     minimize: !devMode
-        // }),
+        new PurifyCSSPlugin({
+            paths: glob.sync([
+                path.join(__dirname, 'src/main/webapp/WEB-INF/**/*.jsp'),
+                path.join(__dirname, 'src/main/webapp/WEB-INF/**/*.tag')
+            ]),
+            minimize: !devMode,
+            purifyOptions: {
+                whitelist: []
+            }
+        }),
 
-        // new CleanWebPackPlugin(['dist'], {
-        //         root: path.join(__dirname, 'src/main/webapp/static'),
-        //         verbose: true,
-        //         dry: false
-        //     }
-        // ),
+        new CleanWebPackPlugin(['dist'], {
+                root: path.join(__dirname, 'src/main/webapp/static'),
+                verbose: true,
+                dry: false
+            }
+        ),
 
         function () {
             this.plugin('done', stats =>{
@@ -78,7 +84,7 @@ module.exports = {
             },
 
             {
-                test: /^\/src\/main\/js\/\.js$/,
+                test: /^\/src\/main\/assets\/js\/\.js$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
