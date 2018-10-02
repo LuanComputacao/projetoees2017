@@ -13,7 +13,7 @@ public class HomeController {
     public ModelAndView home() {
         ModelAndView mv = new ModelAndView(this.home);
         mv.addObject("professor", true);
-        mv.addObject("moderador", false);
+        mv.addObject("moderador", true);
         return mv;
     }
 }
