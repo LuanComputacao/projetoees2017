@@ -1,4 +1,6 @@
 .form-signin {
+  border: 1px solid #ced4da;
+  @include border-radius(3px);
   width: 100%;
   max-width: 330px;
   padding: 15px;

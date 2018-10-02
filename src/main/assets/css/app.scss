@@ -1,2 +1,8 @@
-@import "../../../../node_modules/bootstrap/scss/bootstrap";
-@import "singin";
+// Vendors
+@import "variables";
+@import "fontawesome";
+@import "~bootstrap/scss/bootstrap";
+
+
+// Project
+@import "partials/singin";
