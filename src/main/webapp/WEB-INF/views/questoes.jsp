@@ -7,6 +7,7 @@
     <jsp:attribute name="body">
         Questoes
         ${questoes}
+        ${jsonteste}
     </jsp:attribute>
 </tp:base>
 
