@@ -6,8 +6,8 @@
 <tp:base>
     <jsp:attribute name="body">
 
-        <div class="row">
-                ${materias}
+        <div class="row" v:model="${materias}">
+
         </div>
         <div class="row">
                 ${disciplinas}
