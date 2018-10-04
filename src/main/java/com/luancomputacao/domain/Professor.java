@@ -1,6 +1,7 @@
 package com.luancomputacao.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -26,6 +27,7 @@ public class Professor implements Serializable {
     private String nome;
 
     @Column(name = "senha")
+    @JsonIgnore
     private String senha;
 
     @Column(name = "moderador")
