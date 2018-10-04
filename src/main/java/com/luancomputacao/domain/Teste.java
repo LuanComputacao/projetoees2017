@@ -56,6 +56,7 @@ public class Teste implements Serializable {
             joinColumns = {@JoinColumn(name = "questao_id")},
             inverseJoinColumns = {@JoinColumn(name = "materia_id")}
     )
+    @JsonBackReference("testes")
     private Collection<Questao> questoes;
 
     @OneToMany(mappedBy = "teste")
