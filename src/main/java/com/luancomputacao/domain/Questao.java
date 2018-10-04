@@ -1,6 +1,7 @@
 package com.luancomputacao.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -50,19 +51,22 @@ public class Questao implements Serializable {
     @Column(name = "publica")
     private Boolean publica;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_autor", referencedColumnName = "id", updatable = false, nullable = false)
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    @JsonManagedReference
     private Professor autor;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonManagedReference
     @JoinColumn(name = "id_disciplina", referencedColumnName = "id", updatable = false, nullable = false)
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private Disciplina disciplina;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonManagedReference
     @JoinColumn(name = "id_fase_de_ensino", referencedColumnName = "id", updatable = false, nullable = false)
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private FaseDeEnsino faseDeEnsino;
 
     @OneToMany(mappedBy = "questao")

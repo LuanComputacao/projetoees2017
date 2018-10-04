@@ -5,9 +5,16 @@
 
 <tp:base>
     <jsp:attribute name="body">
-        Questoes
-        ${questoes}
-        ${jsonteste}
+
+        <div class="row">
+                ${materias}
+        </div>
+        <div class="row">
+                ${disciplinas}
+        </div>
+        <div class="row">
+                ${questoes}
+        </div>
     </jsp:attribute>
 </tp:base>
 
