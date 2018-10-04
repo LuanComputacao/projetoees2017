@@ -1,5 +1,6 @@
 package com.luancomputacao.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -29,6 +30,7 @@ public class Materia implements Serializable {
     private Disciplina disciplina;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "materias")
+    @JsonBackReference("materias")
     private Collection<Questao> questoes;
 
     public Materia() {

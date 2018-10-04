@@ -87,9 +87,11 @@ public class Questao implements Serializable {
             joinColumns = {@JoinColumn(name = "questao_id")},
             inverseJoinColumns = {@JoinColumn(name = "materia_id")}
     )
+    @JsonBackReference("questoes")
     private Collection<Materia> materias;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "questoes")
+    @JsonBackReference("questoes")
     private Collection<Teste> testes;
 
     public Questao() {
