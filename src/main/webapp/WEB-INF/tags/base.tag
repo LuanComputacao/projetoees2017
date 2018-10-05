@@ -35,7 +35,7 @@
 <div class="container-fluid">
     <div class="row">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark col">
-            <a class="navbar-brand" href="#">Mr. Xavier - Banco de Questões</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/">Mr. Xavier - Banco de Questões</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -44,13 +44,13 @@
                 <div class="collapse navbar-collapse" id="navbarsExample04">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/">Home<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Questões</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/questoes/">Questões</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Testes</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/#">Testes</a>
                         </li>
                         <c:if test="${moderador}">
                             <li class="nav-item dropdown">

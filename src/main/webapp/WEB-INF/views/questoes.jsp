@@ -5,17 +5,21 @@
 
 <tp:base>
     <jsp:attribute name="body">
+        <id id="js-questoes" v-model:materias="${materias}">
+            <div>
+                <select name="materia" id="">
+                    <option v-for:=""></option>
+                </select>
+            </div>
 
-        <div class="row" v:model="${materias}">
-
-        </div>
-        <div class="row">
-                ${disciplinas}
-        </div>
-        <div class="row">
-                ${questoes}
-        </div>
+            <div id="js-select-disciplinas">
+            </div>
+            <div id="js-select-questoes">
+            </div>
+        </id>
     </jsp:attribute>
 </tp:base>
 
+<script lang="text/javascript">
 
+</script>

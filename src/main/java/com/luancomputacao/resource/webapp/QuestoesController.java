@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/questoes/")
+@RequestMapping(value = "/questoes")
 public class QuestoesController {
 
     private final String view = "questoes";
@@ -31,7 +31,7 @@ public class QuestoesController {
     @Autowired
     private MateriaService materiaService;
 
-    @GetMapping(value = "/")
+    @GetMapping(value = {"/", ""})
     public ModelAndView questoes() throws JsonProcessingException {
         ModelAndView mv = new ModelAndView(this.view);
         ObjectMapper objectMapper = new ObjectMapper();
