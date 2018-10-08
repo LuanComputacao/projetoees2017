@@ -7,13 +7,16 @@ VALUES
 -- DISCIPLINAS
 INSERT INTO DISCIPLINA (NOME)
 VALUES
-('Matemática');
+('Matemática'),
+('Português');
 
 -- MATÉRIAS
 INSERT INTO MATERIA (NOME, ID_DISCIPLINA)
 VALUES
 ('Funções', 1),
-('Funções Compostas', 1);
+('Funções Compostas', 1),
+('Pretérito Perfeito', 2),
+('Sujeito Composto', 2);
 
 -- TIPO DE QUESTÃO
 -- Enums 1 || 2

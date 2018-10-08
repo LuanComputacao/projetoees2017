@@ -20,6 +20,7 @@ public class Materia implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
+    @JsonInclude
     private Integer id;
 
     @Column(name = "nome")
@@ -27,7 +28,7 @@ public class Materia implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_disciplina", referencedColumnName = "id", insertable = false, updatable = false)
-    @JsonManagedReference
+    @JsonBackReference
     private Disciplina disciplina;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "materias")
@@ -43,6 +44,13 @@ public class Materia implements Serializable {
         this.nome = nome;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Disciplina getDisciplina() {
         return disciplina;

@@ -1,8 +1,6 @@
 package com.luancomputacao.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -15,6 +13,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "disciplina")
 @EntityListeners(AuditingEntityListener.class)
+@JsonRootName(value = "disciplina")
 public class Disciplina implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -28,8 +27,8 @@ public class Disciplina implements Serializable {
     @Length(max = 128)
     private String nome;
 
-    @OneToMany(mappedBy = "disciplina")
-    @JsonBackReference
+    @OneToMany(mappedBy = "disciplina", fetch = FetchType.EAGER)
+    @JsonManagedReference
     private Collection<Materia> materias;
 
     @OneToMany(mappedBy = "disciplina")
@@ -45,6 +44,14 @@ public class Disciplina implements Serializable {
 
     public Disciplina(String nome) {
         this.nome = nome;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {

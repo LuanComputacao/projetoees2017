@@ -16,6 +16,15 @@
     </tag>
 
     <tag>
+        <name>PrintSafe</name>
+        <tag-class>com.luancomputacao.customtags.PrintSafe</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>stringJson</name>
+        </attribute>
+    </tag>
+
+    <tag>
         <name>WebpackManifest</name>
         <tag-class>com.luancomputacao.customtags.WebpackManifest</tag-class>
         <body-content>empty</body-content>

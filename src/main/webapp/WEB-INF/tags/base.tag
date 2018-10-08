@@ -26,6 +26,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
+    <script lang="text/javascript" src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+    <script lang="text/javascript" src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
+    <script lang="text/javascript" src="https://unpkg.com/vuex@3.0.1/dist/vuex.js"></script>
+
     <lc:WebpackManifest staticDistPath="/static/dist"/>
     <jsp:invoke fragment="cssLinks"/>
 </head>
