@@ -24,7 +24,7 @@ module.exports = {
 
     output: {
         path: path.resolve(__dirname, sources.dist),
-        filename: '[name].js'
+        filename: devMode? '[name].js': '[name].[chunkhash].js'
     },
 
     plugins: [
@@ -51,8 +51,7 @@ module.exports = {
         //     }
         // }),
 
-        new CleanWebPackPlugin(['dist'], {
-                root: path.join(__dirname, 'src/main/webapp/static'),
+        new CleanWebPackPlugin([sources.dist], {
                 verbose: true,
                 dry: false
             }
@@ -94,7 +93,7 @@ module.exports = {
                 test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/,
                 loader: 'file-loader',
                 options: {
-                    name: 'static/dist/images/[name].[hash].[ext]',
+                    name: 'images/[name].[hash].[ext]',
                 }
             },
 
