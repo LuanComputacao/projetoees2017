@@ -1,4 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@tag description="Tabela escura" pageEncoding="utf-8" %>
+
 <%@attribute name="header" fragment="true" %>
 <%@attribute name="content" fragment="true" %>
 

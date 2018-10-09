@@ -10,6 +10,7 @@ import com.luancomputacao.services.MateriaService;
 import com.luancomputacao.services.QuestaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ public class QuestoesController {
 
     private final String view = "questoes";
     private final String criarQuestao = "criar-questao";
+    private final String editarQuestao = "editar-questao";
     private final String questao = "questao";
 
     @Autowired
@@ -47,10 +49,19 @@ public class QuestoesController {
         mv.addObject("materias", objectMapper.writeValueAsString(materias));
 
         List<Questao> questoes = questaoService.listar();
-        mv.addObject("questoes", objectMapper.writeValueAsString(questoes));
+        mv.addObject("questoes", questoes);
+        mv.addObject("questoesJSON", objectMapper.writeValueAsString(questoes));
 
         return mv;
     }
+
+    @GetMapping(value = "editar/{id}/")
+    public ModelAndView editarQuestao(@PathVariable Integer id){
+        ModelAndView mv = new ModelAndView(this.editarQuestao);
+        mv.addObject("questao", questaoService.encontrar(id));
+        return mv;
+    }
+
 
     @GetMapping(value = "criar/")
     public ModelAndView criarQuestao() {
