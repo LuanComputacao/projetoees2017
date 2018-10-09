@@ -37,7 +37,6 @@ public class PropostaDeInvalidacao implements Serializable {
     @JoinColumn(name = "id_moderador", referencedColumnName = "id", updatable = false, nullable = false)
     private Professor moderador;
 
-
     @Column(name = "criado_em", updatable = false)
     @Temporal(TemporalType.DATE)
     @CreatedDate
@@ -57,6 +56,7 @@ public class PropostaDeInvalidacao implements Serializable {
     @Column(name = "proposta", nullable = false)
     private String proposta;
 
+
     public PropostaDeInvalidacao() {
     }
 
@@ -66,7 +66,7 @@ public class PropostaDeInvalidacao implements Serializable {
         this.moderador = moderador;
     }
 
-    public PropostaDeInvalidacao(Questao questao, Professor professor, Professor moderador, String justificativa, String proposta) {
+    public PropostaDeInvalidacao(Questao questao, Professor professor, String justificativa, String proposta) {
         this.questao = questao;
         this.professor = professor;
         this.moderador = moderador;

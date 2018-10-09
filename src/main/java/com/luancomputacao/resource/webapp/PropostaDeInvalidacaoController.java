@@ -1,35 +1,35 @@
 package com.luancomputacao.resource.webapp;
 
 import com.luancomputacao.domain.PropostaDeInvalidacao;
+import com.luancomputacao.dto.PropostaDeInvalidacaoDAO;
 import com.luancomputacao.services.PropostaDeInvalidacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/propostas-de-invalidacao/")
 public class PropostaDeInvalidacaoController {
 
-    private final String propostasDeInvalidacao = "propostas_de_invalidacao/listar";
-    private final String analisarProposta = "propostas_de_invalidacao/analisar";
-    private final String criarProposta = "propostas_de_invalidacao/criar";
+    private final String listar = "propostas_de_invalidacao/listar";
+    private final String analisar = "propostas_de_invalidacao/analisar";
+    private final String criar = "propostas_de_invalidacao/criar";
+    private final String visualizar = "propostas_de_invalidacao/visualizar";
 
     @Autowired
     PropostaDeInvalidacaoService propostaDeInvalidacaoService;
 
     @GetMapping(value = "")
     public ModelAndView propostasDeInvalidacao() {
-        ModelAndView mv = new ModelAndView(this.propostasDeInvalidacao);
+        ModelAndView mv = new ModelAndView(this.listar);
         mv.addObject("propostas", propostaDeInvalidacaoService.listar());
         return mv;
     }
 
     @GetMapping(value = "{id}/")
     public ModelAndView analisarProposta(@PathVariable Integer id) {
-        ModelAndView mv = new ModelAndView(this.analisarProposta);
+        ModelAndView mv = new ModelAndView(this.analisar);
         PropostaDeInvalidacao propostaDeInvalidacao = propostaDeInvalidacaoService.encontrar(id);
         mv.addObject("questao", propostaDeInvalidacao.getQuestao());
         mv.addObject("proposta", propostaDeInvalidacaoService.encontrar(id));
@@ -37,8 +37,16 @@ public class PropostaDeInvalidacaoController {
     }
 
     @GetMapping(value = "criar/")
-    public ModelAndView criarProposta() {
-        ModelAndView mv = new ModelAndView(this.criarProposta);
+    public ModelAndView formProposta() {
+        ModelAndView mv = new ModelAndView(this.criar);
+        return mv;
+    }
+
+    @PostMapping(value = "criar/")
+    public ModelAndView criarProposta(@RequestBody PropostaDeInvalidacaoDAO proposta) {
+        ModelAndView mv = new ModelAndView(this.visualizar);
+        PropostaDeInvalidacao propostaDeInvalidacao = propostaDeInvalidacaoService.criar(proposta);
+        mv.addObject("proposta", propostaDeInvalidacao);
         return mv;
     }
 }
