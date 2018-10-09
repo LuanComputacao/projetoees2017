@@ -6,27 +6,18 @@
 <tp:base>
     <jsp:attribute name="body">
         <form action="${pageContext.request.contextPath}/propostas-de-invalidacao/criar/" method="post">
-            <input type="hidden" value="${questao.id}">
-            <input type="hidden" value="${professor.id}">
             <div class="row">
                 <div class="col">
-                    <label for="proposta-de-invalidacao">Proposta:</label>
-                    <div>
-                    <textarea name="proposta-de-invalidacao" id="proposta-de-invalidacao" rows="5"
-                              class="form-control"
-                              placeholder="Descreva o que deve ser modificado e como, de forma clara e objetiva."
-                    ></textarea>
+                    Proposta:
+                    <div class="alert alert-secondary">
+
                     </div>
                 </div>
 
                 <div class="col">
-                    <label for="justificativa-de-invalidacao">Justificativa:</label>
-                    <div>
-                    <textarea name="justificativa-de-invalidacao"
-                              id="justificativa-de-invalidacao"
-                              rows="5"
-                              class="form-control"
-                              placeholder="Descreva o motivo pelo qual a modificação deve ser realizada"></textarea>
+                    Justificativa:
+                    <div class="alert alert-secondary">
+
                     </div>
                 </div>
             </div>
