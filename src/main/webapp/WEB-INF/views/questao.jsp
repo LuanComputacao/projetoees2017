@@ -26,9 +26,9 @@
                     <div class="row">
                         <div class="col">
                             <ul>
-                                <c:forEach items="${questao.materias}" var="materia">
-                                    <li>${materia.nome}</li>
-                                </c:forEach>
+                        <c:forEach items="${questao.materias}" var="materia">
+                            <li>${materia.nome}</li>
+                        </c:forEach>
                             </ul>
                         </div>
                     </div>
@@ -64,17 +64,17 @@
                 </div>
 
                 <c:if test="${questao.tipoDeQuestaoEnum == 'DISCURSIVA'}">
-                <%-- - - - - - -  Discursiva  - - - - - - - --%>
+            <%-- - - - - - -  Discursiva  - - - - - - - --%>
                     <div class="row mb-3">
                         <div class="col-auto">Espaço:</div>
                         <div class="col">${questao.espacos} linha(s)</div>
                     </div>
                     <%-- - - - - - -  Discursiva end - - - - - - - --%>
-                </c:if>
+        </c:if>
 
                 <c:if test="${questao.tipoDeQuestaoEnum == 'OBJETIVA'}">
-                <div class="row mb-3">
-                    <c:forEach items="${questao.opcoesDeQuestao}" var="opcao">
+            <div class="row mb-3">
+                <c:forEach items="${questao.opcoesDeQuestao}" var="opcao">
                     <div class="custom-control custom-radio">
 
                         <c:choose>
@@ -87,9 +87,9 @@
                         </c:choose>
                         - ${opcao.texto}
                     </div>
-                    </c:forEach>
-                </div>
-                </c:if>
+                </c:forEach>
+            </div>
+        </c:if>
 
             </div>
 

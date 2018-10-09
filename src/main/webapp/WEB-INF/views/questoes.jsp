@@ -34,33 +34,65 @@
                 </div>
 
                 <div class="col text-center">
-                    <a class="btn btn-secondary" href="${pageContext.request.contextPath}/questoes/criar/">Criar Questão</a>
+                    <a class="btn btn-secondary" href="${pageContext.request.contextPath}/questoes/criar/">Criar
+                        Questão</a>
                 </div>
             </div>
 
 
             <div id="js-tabela-questoes" class="m3 border p-3">
-                <%--<div class="row">--%>
-                    <%--<div class="col form-inline">--%>
-                        <%--<div class="form-group">--%>
-                            <%--<label for="filter" class="sr-only">Filter</label>--%>
-                            <%--<input id="filter" type="text" class="form-control" v-model="filter" placeholder="Filter">--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
+                <tp:table_dark>
+                    <jsp:attribute name="header">
+                        <td>ID</td>
+                        <td>Pública</td>
+                        <td>Invalidada</td>
+                        <td>Enunciado</td>
+                        <td>Tipo</td>
+                        <td>Nível</td>
+                        <td>Editar</td>
+                        <td>Apagar</td>
+                    </jsp:attribute>
 
-                <%--<div class="row">--%>
-                    <%--<div id="table" class="col table-responsive">--%>
-                        <%--<datatable :columns="columns" :data="questoes" :filter-by="filter"></datatable>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-
-                <%--<div class="row">--%>
-                    <%--<div class="col btn-toolbar">--%>
-                        <%--<datatable-pager v-model="page" type="abbreviated" :per-page="per_page"></datatable-pager>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
+                    <jsp:attribute name="content">
+                        <c:forEach items="${questoes}" var="questao">
+                            <tr>
+                                <td>${questao.id}</td>
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${questao.publica}">
+                                            Sim
+                                        </c:when>
+                                        <c:otherwise>
+                                            Não
+                                        </c:otherwise>
+                                    </c:choose>
+                                </td>
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${questao.invalidada}">
+                                            Sim
+                                        </c:when>
+                                        <c:otherwise>
+                                            Não
+                                        </c:otherwise>
+                                    </c:choose>
+                                </td>
+                                <td>${questao.enunciado}</td>
+                                <td>${questao.tipoDeQuestaoEnum}</td>
+                                <td>${questao.nivel}</td>
+                                <td class="text-center text-info">
+                                    <a href="${pageContext.request.contextPath}/questoes/editar/${questao.id}/">
+                                        <span class="fas fa-pencil-alt"></span>
+                                    </a>
+                                </td>
+                                <td class="text-center text-warning">
+                                    <span class="fas fa-eraser" id="js-apaga-questao-${questao.id}"></span>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </jsp:attribute>
+                </tp:table_dark>
+            </div>
         </div>
 
 
