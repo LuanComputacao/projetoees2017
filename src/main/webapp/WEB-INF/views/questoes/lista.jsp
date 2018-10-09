@@ -49,6 +49,7 @@
                         <td>Enunciado</td>
                         <td>Tipo</td>
                         <td>Nível</td>
+                        <td>Visualizar</td>
                         <td>Editar</td>
                         <td>Apagar</td>
                     </jsp:attribute>
@@ -80,6 +81,11 @@
                                 <td>${questao.enunciado}</td>
                                 <td>${questao.tipoDeQuestaoEnum}</td>
                                 <td>${questao.nivel}</td>
+                                <td class="text-center text-success">
+                                    <a href="${pageContext.request.contextPath}/questoes/${questao.id}/">
+                                        <span class="fas fa-external-link-alt"></span>
+                                    </a>
+                                </td>
                                 <td class="text-center text-info">
                                     <a href="${pageContext.request.contextPath}/questoes/editar/${questao.id}/">
                                         <span class="fas fa-pencil-alt"></span>

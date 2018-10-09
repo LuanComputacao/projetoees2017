@@ -57,6 +57,9 @@ public class PropostaDeInvalidacao implements Serializable {
     @Column(name = "proposta", nullable = false)
     private String proposta;
 
+    public PropostaDeInvalidacao() {
+    }
+
     public PropostaDeInvalidacao(Questao questao, Professor professor, Professor moderador) {
         this.questao = questao;
         this.professor = professor;
@@ -71,6 +74,13 @@ public class PropostaDeInvalidacao implements Serializable {
         this.proposta = proposta;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Questao getQuestao() {
         return questao;
