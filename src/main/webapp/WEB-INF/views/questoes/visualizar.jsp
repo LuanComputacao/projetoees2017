@@ -70,26 +70,27 @@
                         <div class="col">${questao.espacos} linha(s)</div>
                     </div>
                     <%-- - - - - - -  Discursiva end - - - - - - - --%>
-        </c:if>
+                </c:if>
 
                 <c:if test="${questao.tipoDeQuestaoEnum == 'OBJETIVA'}">
-            <div class="row mb-3">
-                <c:forEach items="${questao.opcoesDeQuestao}" var="opcao">
-                    <div class="custom-control custom-radio">
-
-                        <c:choose>
-                            <c:when test="${opcao.value}">
-                                <span class="fas fa-check-square"></span>
-                            </c:when>
-                            <c:when test="${!opcao.value}">
-                                <span class="fas fa-square"></span>
-                            </c:when>
-                        </c:choose>
-                        - ${opcao.texto}
+                    <div class="row mb-3">
+                        <div class="col custom-control custom-radio">
+                            <c:forEach items="${questao.opcoesDeQuestao}" var="opcao">
+                                <div class="row">
+                                    <c:choose>
+                                        <c:when test="${opcao.value}">
+                                            <span class="mt-1 fas fa-check-square"></span>
+                                        </c:when>
+                                        <c:when test="${!opcao.value}">
+                                            <span class="mt-1 fas fa-square"></span>
+                                        </c:when>
+                                    </c:choose>
+                                    &nbsp;- ${opcao.texto}
+                                </div>
+                            </c:forEach>
+                        </div>
                     </div>
-                </c:forEach>
-            </div>
-        </c:if>
+                </c:if>
 
             </div>
 

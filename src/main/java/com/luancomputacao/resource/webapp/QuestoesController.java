@@ -22,10 +22,10 @@ import java.util.List;
 @RequestMapping(value = "/questoes")
 public class QuestoesController {
 
-    private final String view = "questoes";
-    private final String criarQuestao = "criar-questao";
-    private final String editarQuestao = "editar-questao";
-    private final String questao = "questao";
+    private final String view = "questoes/lista";
+    private final String criarQuestao = "questoes/criar";
+    private final String editarQuestao = "questoes/editar";
+    private final String questao = "questoes/visualizar";
 
     @Autowired
     private QuestaoService questaoService;

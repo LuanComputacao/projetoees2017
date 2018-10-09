@@ -54,11 +54,11 @@
                             <a class="nav-link" href="${pageContext.request.contextPath}/questoes/">Questões</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/#">Testes</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/">Testes</a>
                         </li>
                         <c:if test="${moderador}">
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="#">Propostas de Invalidações</a>
+                                <a class="nav-link" href="${pageContext.request.contextPath}/propostas-de-invalidacao/">Propostas de Invalidações</a>
                             </li>
                         </c:if>
                     </ul>
