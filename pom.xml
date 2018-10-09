@@ -133,7 +133,7 @@
                     </execution>
 
                     <execution>
-                        <id>npm run watch</id>
+                        <id>npm run dist</id>
                         <goals><goal>npm</goal></goals>
                     </execution>
                 </executions>

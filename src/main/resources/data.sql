@@ -31,15 +31,27 @@ VALUES
 INSERT INTO QUESTAO
 (CRIADO_EM, ATUALIZADO_EM, ENUNCIADO, ESPACOS, INVALIDADA, NIVEL, PUBLICA, TIPO_DE_QUESTAO, ID_AUTOR, ID_DISCIPLINA, ID_FASE_DE_ENSINO)
 VALUES
-(current_timestamp(), current_timestamp(), 'Calcule x+2=3', 3, FALSE , 3.0, TRUE , 1, 1, 1, 1),
-(current_timestamp(), current_timestamp(), 'Calcule x²+2⁴=3', 5, FALSE , 3.5 , TRUE , 1, 2, 1, 2);
+(current_timestamp(), current_timestamp(), 'Calcule x+2=3', 3, FALSE , 3.0, TRUE , 0, 1, 1, 1),
+(current_timestamp(), current_timestamp(), 'Calcule x²+2⁴=3', 5, FALSE , 3.5 , TRUE , 0, 2, 1, 2),
+(current_timestamp(), current_timestamp(), 'O que é um sujeito composto', 5, FALSE , 1 , TRUE , 1, 2, 2, 1);
+
+-- OPÇÕES DE QUESTÃO
+INSERT INTO OPCAO_DE_QUESTAO
+(TEXTO, VALUE, ID_QUESTAO)
+VALUES
+  ('Sujeito é a pessoa principal de uma oração', FALSE , 3),
+  ('Predicado é a pessoa principal de uma oração', FALSE , 3),
+  ('Verbo é a pessoa principal de uma oração', TRUE, 3),
+  ('Lalala é a pessoa principal de uma oração', FALSE , 3),
+  ('Bla Bla Bla é a pessoa principal de uma oração', FALSE , 3);
 
 -- MATÉRIAS DA QUESTÃO
 INSERT INTO MATERIA_DE_QUESTAO
 (QUESTAO_ID, MATERIA_ID)
 VALUES
 (1,1),
-(2,2);
+(2,2),
+(3,4);
 
 
 INSERT INTO TESTE

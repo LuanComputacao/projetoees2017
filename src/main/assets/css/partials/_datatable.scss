@@ -1,0 +1,12 @@
+.pagination{
+  @extend .btn-group;
+}
+
+.pagination > li{
+}
+
+.pagination > li > a{
+  @extend .btn;
+  @extend .btn-secondary;
+  color: #ffffff !important;
+}

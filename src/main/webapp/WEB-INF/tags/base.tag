@@ -27,9 +27,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-    <script lang="text/javascript" src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
     <script lang="text/javascript" src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
-    <script lang="text/javascript" src="https://unpkg.com/vuex@3.0.1/dist/vuex.js"></script>
 
     <lc:WebpackManifest staticDistPath="/static/dist"/>
     <jsp:invoke fragment="cssLinks"/>
@@ -41,7 +39,8 @@
     <div class="row">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark col">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/">Mr. Xavier - Banco de Questões</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04"
+                    aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -69,9 +68,9 @@
     </div>
 
     <main role="main" class="row" id="js-main">
-            <div class="col" id="">
-                <jsp:invoke fragment="body"/>
-            </div>
+        <div class="col pt-3">
+            <jsp:invoke fragment="body"/>
+        </div>
 
         <div class="row">
             <jsp:invoke fragment="footer"/>

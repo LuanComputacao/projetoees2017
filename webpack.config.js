@@ -17,6 +17,13 @@ var sources = {
 module.exports = {
     mode: devMode ? "development" : "production",
 
+    resolve: {
+        alias: {
+            vue: 'vue/dist/vue.js',
+            vuex: 'vuex/dist/vuex.js'
+        }
+    },
+
     entry: [
         './src/main/assets/js/app.js',
         './src/main/assets/css/app.scss',
@@ -51,11 +58,11 @@ module.exports = {
         //     }
         // }),
 
-        new CleanWebPackPlugin([sources.dist], {
-                verbose: true,
-                dry: false
-            }
-        ),
+        // new CleanWebPackPlugin([sources.dist], {
+        //         verbose: true,
+        //         dry: false
+        //     }
+        // ),
 
         function () {
             this.plugin('done', stats =>{
