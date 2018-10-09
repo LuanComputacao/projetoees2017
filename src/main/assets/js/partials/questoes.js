@@ -1,32 +1,64 @@
-import DatatableFactory from 'vuejs-datatable';
+import Vue from 'vue';
+import Vuex from 'vuex';
 import {mapState, mapGetters, mapMutations} from 'vuex';
 
+Vue.use(Vuex);
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    let selectorDeMateria;
-    selectorDeMateria = new Vue({
-        el: '#js-search-questoes',
+    const store = new Vuex.Store({
+        state: {
+            materias: [],
+            materia: {},
+            disciplinas: [],
+            disciplina: {},
+            questoes: [],
+        },
+
+        getters: {
+            materiasDaDisciplina: state => disciplinaEscolhida => {
+                return state.disciplinas.filter(disciplina => {
+                    return disciplina.nome === disciplinaEscolhida;
+                }).map(disciplina => disciplina.materias)
+            }
+        },
+        mutations: {
+            setPage: state => paginaSelecionada => {
+                state.page = paginaSelecionada
+            },
+            setMateria: state => materiaSelecionada => {
+                state.materia = materiaSelecionada;
+            }
+        }
+
+    });
+
+    let selectorDeMateria = new Vue({
+        el: document.getElementById('js-search-questoes'),
         store,
         data: {
-
+            filter: '',
+            page: 1,
+            per_page: 1,
+            columns: [
+                {label: 'ID', field: 'id', align: 'center', filterable: false},
+                {label: 'Invalidada', field: 'invalidada', filterable: true},
+                {label: 'Públicada', field: 'publica'},
+                {label: 'Enunciado', field: 'enunciado'},
+                {label: 'Nível', field: 'nivel', align: 'center', sortable: false},
+                {label: 'Disciplina', field: 'disciplina.nome', align: 'right', sortable: false}
+            ],
+            rows: []
         },
 
         computed: {
-            page: {
-                get () {
-                    return this.$store.state.page;
-                },
-                set (value) {
-                    this.$store.commit('setPage', value)
-                }
-            },
             ...mapState([
-                'materias', 'materiasSelecionadas',
-                'disciplinas', 'disciplinaSelecionada',
-                'questoes',
-
-                'columns', 'rows', 'page', 'per_page', 'filter']),
+                'materias',
+                'materia',
+                'disciplinas',
+                'disciplina',
+                'questoes'
+            ]),
             ...mapGetters(['materiasDaDisciplina']),
             ...mapMutations({})
         },
@@ -35,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 this.$store.commit('setPage', page)
             },
             doSomething: function () {
-                console.log('clicked');
+
             }
         }
     });

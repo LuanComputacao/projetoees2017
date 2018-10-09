@@ -1,5 +1,6 @@
 package com.luancomputacao.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -21,6 +22,7 @@ public class OpcaoDeQuestao implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_questao", referencedColumnName = "id", insertable = false, updatable = false)
     @JsonManagedReference
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private Questao questao;
 
     @Column(name = "texto")
@@ -32,22 +34,28 @@ public class OpcaoDeQuestao implements Serializable {
     public OpcaoDeQuestao() {
     }
 
-
     public OpcaoDeQuestao(String texto) {
         this.texto = texto;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTexto() {
         return texto;
     }
 
-    public Boolean getValue() {
-        return value;
-    }
-
-
     public void setTexto(String texto) {
         this.texto = texto;
+    }
+
+    public Boolean getValue() {
+        return value;
     }
 
     public void setValue(Boolean value) {

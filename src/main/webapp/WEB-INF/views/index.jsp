@@ -5,6 +5,11 @@
 
 <tp:base>
     <jsp:attribute name="body">
+        <div class="row">
+            <div class="col text-center">
+                <h1>Mr. Xavier</h1>
+            </div>
+        </div>
         <%--Se não estiver autenticado--%>
         <c:if test="${!professor}">
             <jsp:include page="partials/professor/login.jsp"/>

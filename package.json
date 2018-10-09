@@ -29,6 +29,8 @@
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "~1.0.0",
+    "datatables.net": "^1.10.19",
+    "es6-promise": "^4.2.5",
     "file-loader": "^2.0.0",
     "glob-all": "^3.1.0",
     "mini-css-extract-plugin": "^0.4.3",
@@ -40,6 +42,7 @@
     "sass-loader": "^7.1.0",
     "style-loader": "~0.23.0",
     "vuejs-datatable": "^1.7.0",
-    "webpack": "^4.19.1"
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.2"
   }
 }

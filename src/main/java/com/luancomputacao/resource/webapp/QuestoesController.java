@@ -11,6 +11,7 @@ import com.luancomputacao.services.QuestaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,6 +22,8 @@ import java.util.List;
 public class QuestoesController {
 
     private final String view = "questoes";
+    private final String criarQuestao = "criar-questao";
+    private final String questao = "questao";
 
     @Autowired
     private QuestaoService questaoService;
@@ -49,4 +52,18 @@ public class QuestoesController {
         return mv;
     }
 
+    @GetMapping(value = "criar/")
+    public ModelAndView criarQuestao() {
+        ModelAndView mv = new ModelAndView(this.criarQuestao);
+        return mv;
+    }
+
+    @GetMapping(value = "{id}/")
+    public ModelAndView visualizarQuestao(@PathVariable Integer id) throws JsonProcessingException {
+        ModelAndView mv = new ModelAndView(this.questao);
+        ObjectMapper objectMapper = new ObjectMapper();
+        Questao questao = questaoService.encontrar(id);
+        mv.addObject("questao", questao);
+        return mv;
+    }
 }
