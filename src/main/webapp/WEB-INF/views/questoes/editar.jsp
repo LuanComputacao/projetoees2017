@@ -8,7 +8,11 @@
 
         <div id="js-form-questao">
             <form action="${pageContext.request.contextPath}/questoes/editar/${questao.id}/" method="post">
-                <tp:form-questao questao_tipo="${questao.tipoDeQuestaoEnum}">
+                <tp:form-questao
+                        questao="${questao}"
+                        disciplinas="${disciplinas}"
+                        materias="${materias}"
+                >
                 </tp:form-questao>
 
                 <div class="row">
