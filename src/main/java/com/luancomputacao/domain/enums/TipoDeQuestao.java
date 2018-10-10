@@ -1,7 +1,8 @@
-package com.luancomputacao.domain;
+package com.luancomputacao.domain.enums;
 
 public enum TipoDeQuestao {
-    DISCURSIVA(1), OBJETIVA(2);
+    DISCURSIVA(1),
+    OBJETIVA(2);
 
     private final int tipoDeQuestao;
 

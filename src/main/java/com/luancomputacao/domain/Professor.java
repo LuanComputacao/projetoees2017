@@ -2,12 +2,16 @@ package com.luancomputacao.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.luancomputacao.domain.enums.Perfil;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "professor")
@@ -53,8 +57,12 @@ public class Professor implements Serializable {
     @JsonBackReference
     private Collection<Teste> testes;
 
-    public Professor() {
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name="PERFIS")
+    private Set<Integer> perfis = new HashSet<>();
 
+    public Professor() {
+        addPerfil(Perfil.PROFESSOR);
     }
 
     public Professor(String cpf, String nome, String senha, Boolean moderador) {
@@ -62,6 +70,16 @@ public class Professor implements Serializable {
         this.nome = nome;
         this.senha = senha;
         this.moderador = moderador;
+        addPerfil(Perfil.PROFESSOR);
+    }
+
+    private static Perfil perfilEnum(Integer x) {
+        try {
+            return Perfil.toEnum(x);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public String getCpf() {
@@ -102,6 +120,14 @@ public class Professor implements Serializable {
 
     public void setQuestoes(Collection<Questao> questoes) {
         this.questoes = questoes;
+    }
+
+    public Set<Perfil> getPerfil(){
+        return this.perfis.stream().map(Professor::perfilEnum).collect(Collectors.toSet());
+    }
+
+    public void addPerfil(Perfil perfil) {
+        perfis.add(perfil.getCod());
     }
 
     @Override
