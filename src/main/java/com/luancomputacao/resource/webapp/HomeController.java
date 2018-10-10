@@ -12,8 +12,8 @@ public class HomeController {
     @GetMapping(value = "/")
     public ModelAndView home() {
         ModelAndView mv = new ModelAndView(this.home);
-        mv.addObject("professor", true);
-        mv.addObject("moderador", true);
+        mv.addObject("professor", false);
+        mv.addObject("moderador", false);
         return mv;
     }
 }

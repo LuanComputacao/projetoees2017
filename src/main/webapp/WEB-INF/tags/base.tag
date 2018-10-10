@@ -6,6 +6,11 @@
 <%@attribute name="cssLinks" fragment="true" %>
 <%@attribute name="jsFooter" fragment="true" %>
 
+<%--User variables--%>
+<%@attribute name="professor" type="java.lang.Boolean" %>
+<%@attribute name="moderador" type="java.lang.Boolean" %>
+
+
 <%--Contents--%>
 <%@attribute name="title" fragment="true" %>
 <%@attribute name="subtitle" fragment="true" %>
@@ -36,36 +41,38 @@
 
 <body>
 <div class="container-fluid">
-    <div class="row">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark col">
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/">Mr. Xavier - Banco de Questões</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04"
-                    aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <c:if test="${professor}">
+        <div class="row">
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark col">
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/">Mr. Xavier - Banco de Questões</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04"
+                        aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <c:if test="${professor}">
-                <div class="collapse navbar-collapse" id="navbarsExample04">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/">Home<span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/questoes/">Questões</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/">Testes</a>
-                        </li>
-                        <c:if test="${moderador}">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="${pageContext.request.contextPath}/propostas-de-invalidacao/">Propostas de Invalidações</a>
+                <c:if test="${professor}">
+                    <div class="collapse navbar-collapse" id="navbarsExample04">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="${pageContext.request.contextPath}/">Home<span class="sr-only">(current)</span></a>
                             </li>
-                        </c:if>
-                    </ul>
-                </div>
-            </c:if>
-        </nav>
-    </div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="${pageContext.request.contextPath}/questoes/">Questões</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="${pageContext.request.contextPath}/">Testes</a>
+                            </li>
+                            <c:if test="${moderador}">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="${pageContext.request.contextPath}/propostas-de-invalidacao/">Propostas de Invalidações</a>
+                                </li>
+                            </c:if>
+                        </ul>
+                    </div>
+                </c:if>
+            </nav>
+        </div>
+    </c:if>
 
     <main role="main" class="row" id="js-main">
         <div class="col pt-3">

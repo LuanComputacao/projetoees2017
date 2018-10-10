@@ -145,7 +145,7 @@ public class ProfessorServiceTest {
         doReturn(false)
                 .when(this.professorService)
                 .verificaDados(any(String.class), any(String.class), any(String.class));
-        Assert.assertNull(this.professorService.criarProfessor(cpfValido, "Nome", senhaValida));
+        Assert.assertNull(this.professorService.criarProfessorComum(cpfValido, "Nome", senhaValida));
     }
 
     @Test
@@ -158,7 +158,7 @@ public class ProfessorServiceTest {
         when(this.mockProfessorRepository.save(any(Professor.class)))
                 .thenReturn(new Professor("", "", "", false));
 
-        Professor professor = this.professorService.criarProfessor(cpfValido, "Nome", senhaValida);
+        Professor professor = this.professorService.criarProfessorComum(cpfValido, "Nome", senhaValida);
         Assert.assertThat(professor, instanceOf(Professor.class));
         Assert.assertFalse(professor.getModerador());
     }

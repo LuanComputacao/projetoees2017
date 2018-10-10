@@ -16,7 +16,7 @@ public class ProfessorService {
 
     /**
      * Avalia se o Nome é válido
-     *
+     * <p>
      * - mais de um caractere válido
      *
      * @param nome Nome para avaliação
@@ -65,6 +65,9 @@ public class ProfessorService {
         return (this.validaCpf(cpf) && this.validaNome(nome) && this.validaSenha(senha));
     }
 
+    public Professor criarProfessor(String cpf, String nome, String senha, boolean moderador) {
+        return moderador ? this.criarModerador(cpf, nome, senha) : this.criarProfessorComum(cpf, nome, senha);
+    }
 
     /**
      * Cria um Professor do tipo Moderador
@@ -90,7 +93,7 @@ public class ProfessorService {
      * @param senha Senha para o Professor
      * @return Novo objeto do tipo professor ou nulo se falhar
      */
-    public Professor criarProfessor(String cpf, String nome, String senha) {
+    public Professor criarProfessorComum(String cpf, String nome, String senha) {
         if (verificaDados(cpf, nome, senha)) {
             Professor professor = new Professor(cpf, nome, senha, false);
             return professorRepository.save(professor);

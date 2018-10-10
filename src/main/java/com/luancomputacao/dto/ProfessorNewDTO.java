@@ -4,16 +4,17 @@ import com.luancomputacao.domain.Professor;
 
 import java.util.Objects;
 
-public class ProfessorDTO {
+public class ProfessorNewDTO {
     private String cpf;
     private String nome;
+    private String senha;
     private Boolean moderador;
 
-    public ProfessorDTO() {
+    public ProfessorNewDTO() {
 
     }
 
-    public ProfessorDTO(Professor professor) {
+    public ProfessorNewDTO(Professor professor) {
         this.nome = professor.getNome();
         this.cpf = professor.getCpf();
     }
@@ -33,6 +34,14 @@ public class ProfessorDTO {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public Boolean getModerador() {
