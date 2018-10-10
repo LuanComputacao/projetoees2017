@@ -3,6 +3,7 @@ package com.luancomputacao.resource.webapp;
 import com.luancomputacao.domain.PropostaDeInvalidacao;
 import com.luancomputacao.dto.PropostaDeInvalidacaoDAO;
 import com.luancomputacao.services.PropostaDeInvalidacaoService;
+import com.luancomputacao.services.QuestaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,9 @@ public class PropostaDeInvalidacaoController {
     @Autowired
     PropostaDeInvalidacaoService propostaDeInvalidacaoService;
 
+    @Autowired
+    private QuestaoService questaoService;
+
     @GetMapping(value = "")
     public ModelAndView propostasDeInvalidacao() {
         ModelAndView mv = new ModelAndView(this.listar);
@@ -36,9 +40,10 @@ public class PropostaDeInvalidacaoController {
         return mv;
     }
 
-    @GetMapping(value = "criar/")
-    public ModelAndView formProposta() {
+    @GetMapping(value = "criar/{id}")
+    public ModelAndView formProposta(@PathVariable Integer id) {
         ModelAndView mv = new ModelAndView(this.criar);
+        mv.addObject("questao", questaoService.encontrar(id));
         return mv;
     }
 

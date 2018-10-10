@@ -98,6 +98,8 @@
 
         <div class="row">
             <div class="col text-right"><a href="${pageContext.request.contextPath}/questoes/" class="btn btn-primary">Voltar</a></div>
+            <div class="col text-right"><a href="${pageContext.request.contextPath}/questoes/editar/${questao.id}/" class="btn btn-primary">Editar</a></div>
+            <div class="col text-right"><a href="${pageContext.request.contextPath}/propostas-de-invalidacao/criar/${questao.id}/" class="btn btn-primary">Propor Invalidação</a></div>
         </div>
 
     </jsp:attribute>

@@ -3,9 +3,11 @@ package com.luancomputacao.resource.webapp;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.luancomputacao.domain.Disciplina;
+import com.luancomputacao.domain.FaseDeEnsino;
 import com.luancomputacao.domain.Materia;
 import com.luancomputacao.domain.Questao;
 import com.luancomputacao.services.DisciplinaService;
+import com.luancomputacao.services.FaseDeEnsinoService;
 import com.luancomputacao.services.MateriaService;
 import com.luancomputacao.services.QuestaoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,17 +38,13 @@ public class QuestoesController {
     @Autowired
     private MateriaService materiaService;
 
+    @Autowired
+    private FaseDeEnsinoService faseDeEnsinoService;
+
     @GetMapping(value = {"/", ""})
     public ModelAndView questoes() throws JsonProcessingException {
         ModelAndView mv = new ModelAndView(this.view);
         ObjectMapper objectMapper = new ObjectMapper();
-
-        List<Disciplina> disciplinas = disciplinaService.listar();
-        mv.addObject("disciplinas", objectMapper.writeValueAsString(disciplinas));
-
-
-        List<Materia> materias = materiaService.listar();
-        mv.addObject("materias", objectMapper.writeValueAsString(materias));
 
         List<Questao> questoes = questaoService.listar();
         mv.addObject("questoes", questoes);
@@ -58,6 +56,11 @@ public class QuestoesController {
     @GetMapping(value = "editar/{id}/")
     public ModelAndView editarQuestao(@PathVariable Integer id){
         ModelAndView mv = new ModelAndView(this.editarQuestao);
+
+        mv.addObject("disciplinas",  disciplinaService.listar());
+
+        mv.addObject("materias",  materiaService.listar());
+
         mv.addObject("questao", questaoService.encontrar(id));
         return mv;
     }
@@ -66,6 +69,9 @@ public class QuestoesController {
     @GetMapping(value = "criar/")
     public ModelAndView criarQuestao() {
         ModelAndView mv = new ModelAndView(this.criarQuestao);
+        mv.addObject("disciplinas",  disciplinaService.listar());
+        mv.addObject("materias",  materiaService.listar());
+        mv.addObject("fasesDeEnsino",  faseDeEnsinoService.listar());
         return mv;
     }
 

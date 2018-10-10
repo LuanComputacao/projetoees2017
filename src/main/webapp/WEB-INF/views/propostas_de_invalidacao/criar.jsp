@@ -6,8 +6,8 @@
 <tp:base>
     <jsp:attribute name="body">
         <form action="${pageContext.request.contextPath}/propostas-de-invalidacao/criar/" method="post">
-            <input type="hidden" value="${questao.id}">
-            <input type="hidden" value="${professor.id}">
+            <input type="hidden" name="questao-id" value="${questao.id}">
+            <input type="hidden" name="professor-id" value="${professor.id}">
             <div class="row">
                 <div class="col">
                     <label for="proposta-de-invalidacao">Proposta:</label>
