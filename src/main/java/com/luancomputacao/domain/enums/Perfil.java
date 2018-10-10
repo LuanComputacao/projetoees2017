@@ -3,7 +3,7 @@ package com.luancomputacao.domain.enums;
 public enum Perfil {
     ADMIN(1, "ROLE_ADMIN"),
     PROFESSOR(2, "ROLE_CLIENTE"),
-    MODERADOR(3, "ROLE_CLIENTE")
+    MODERADOR(3, "ROLE_MODERADOR")
     ;
 
     private int cod;
