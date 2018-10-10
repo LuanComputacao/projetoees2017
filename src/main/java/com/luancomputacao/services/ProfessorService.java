@@ -1,15 +1,21 @@
 package com.luancomputacao.services;
 
 import com.luancomputacao.domain.Professor;
+import com.luancomputacao.domain.enums.Perfil;
 import com.luancomputacao.repository.ProfessorRepository;
 import com.luancomputacao.utils.CpfUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class ProfessorService {
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     ProfessorRepository professorRepository;
@@ -79,7 +85,8 @@ public class ProfessorService {
      */
     public Professor criarModerador(String cpf, String nome, String senha) {
         if (verificaDados(cpf, nome, senha)) {
-            Professor professor = new Professor(cpf, nome, senha, true);
+            Professor professor = new Professor(cpf, nome, bCryptPasswordEncoder.encode(senha), true);
+            professor.addPerfil(Perfil.MODERADOR);
             return professorRepository.save(professor);
         }
         return null;
@@ -95,7 +102,7 @@ public class ProfessorService {
      */
     public Professor criarProfessorComum(String cpf, String nome, String senha) {
         if (verificaDados(cpf, nome, senha)) {
-            Professor professor = new Professor(cpf, nome, senha, false);
+            Professor professor = new Professor(cpf, nome, bCryptPasswordEncoder.encode(senha), false);
             return professorRepository.save(professor);
         }
         return null;
@@ -113,5 +120,9 @@ public class ProfessorService {
      */
     public List<Professor> listar() {
         return professorRepository.findAll();
+    }
+
+    public Professor encontrarPorCPF(String cpf) {
+        return professorRepository.findByCpf(cpf);
     }
 }

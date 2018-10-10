@@ -82,6 +82,14 @@ public class Professor implements Serializable {
         return null;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getCpf() {
         return cpf;
     }
@@ -122,7 +130,7 @@ public class Professor implements Serializable {
         this.questoes = questoes;
     }
 
-    public Set<Perfil> getPerfil(){
+    public Set<Perfil> getPerfis(){
         return this.perfis.stream().map(Professor::perfilEnum).collect(Collectors.toSet());
     }
 
