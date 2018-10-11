@@ -1,9 +1,10 @@
 package com.luancomputacao.security;
 
-import com.luancomputacao.config.JWTUtil;
+import com.luancomputacao.utils.JWTUtil;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
@@ -12,20 +13,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.security.Security;
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
-    private JWTUtil jwtUtil;
-    private UserDetailsService userDetailsService;
+    UserDetailsService userDetailsService;
+    JWTUtil jwtUtil;
 
     public JWTAuthorizationFilter(AuthenticationManager authenticationManager,
                                   JWTUtil jwtUtil,
                                   UserDetailsService userDetailsService) {
         super(authenticationManager);
         this.jwtUtil = jwtUtil;
-
-
+        this.userDetailsService = userDetailsService;
     }
 
     @Override
@@ -33,19 +32,26 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
                                     HttpServletResponse httpServletResponse,
                                     FilterChain filterChain)
             throws IOException, ServletException {
-        String header = httpServletRequest.getHeader("Authorization");
+
+        String header = httpServletRequest.getHeader("Autorization");
         if (header != null && header.startsWith("Bearer ")) {
-            UsernamePasswordAuthenticationToken usernamePassAuthToken = getAuthentication(httpServletRequest, header.substring(7));
-            if (usernamePassAuthToken != null) {
-                SecurityContextHolder.getContext().setAuthentication(usernamePassAuthToken);
+            UsernamePasswordAuthenticationToken authenticationToken = getAuthentication(httpServletRequest,
+                    header.substring(7));
+            if (authenticationToken != null) {
+                SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             }
         }
+        filterChain.doFilter(httpServletRequest, httpServletResponse);
 
     }
 
-    private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest httpServletRequest, String authToken) {
-
+    private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest httpServletRequest,
+                                                                  String jwtToken) {
+        if (jwtUtil.tokenValido(jwtToken)) {
+            String username = jwtUtil.getUsername(jwtToken);
+            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+            return new UsernamePasswordAuthenticationToken(username, null, ((UserDetails) userDetails).getAuthorities());
+        }
         return null;
     }
-
 }
