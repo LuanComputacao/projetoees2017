@@ -5,7 +5,6 @@ import com.luancomputacao.domain.enums.Perfil;
 import com.luancomputacao.repository.ProfessorRepository;
 import com.luancomputacao.utils.CpfUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +14,7 @@ import java.util.List;
 public class ProfessorService {
 
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private BCryptPasswordEncoder bc;
 
     @Autowired
     ProfessorRepository professorRepository;
@@ -58,7 +57,6 @@ public class ProfessorService {
         return (senha.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[._@#$%^&+=])(?=\\S+$).{8,}$"));
     }
 
-
     /**
      * Verifica se os dados são validos para a criação do Professor
      *
@@ -85,7 +83,7 @@ public class ProfessorService {
      */
     public Professor criarModerador(String cpf, String nome, String senha) {
         if (verificaDados(cpf, nome, senha)) {
-            Professor professor = new Professor(cpf, nome, bCryptPasswordEncoder.encode(senha), true);
+            Professor professor = new Professor(cpf, nome, bc.encode(senha), true);
             professor.addPerfil(Perfil.MODERADOR);
             return professorRepository.save(professor);
         }
@@ -102,7 +100,7 @@ public class ProfessorService {
      */
     public Professor criarProfessorComum(String cpf, String nome, String senha) {
         if (verificaDados(cpf, nome, senha)) {
-            Professor professor = new Professor(cpf, nome, bCryptPasswordEncoder.encode(senha), false);
+            Professor professor = new Professor(cpf, nome, bc.encode(senha), false);
             return professorRepository.save(professor);
         }
         return null;

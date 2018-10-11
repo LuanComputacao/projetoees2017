@@ -1,9 +1,9 @@
-package com.luancomputacao.config;
+package com.luancomputacao.security;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.luancomputacao.dto.LoginDTO;
-import com.luancomputacao.security.UserSpringSecurity;
+import com.luancomputacao.utils.JWTUtil;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -40,10 +40,10 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                     new UsernamePasswordAuthenticationToken(loginDTO.getCpf(), loginDTO.getSenha());
 
             Authentication auth = authenticationManager.authenticate(authToken);
+            return auth;
         } catch (IOException e) {
             throw new RuntimeException();
         }
-        return null;
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.luancomputacao.config;
 
-import com.luancomputacao.services.UserDetailServiceImpl;
+import com.luancomputacao.security.JWTAuthenticationFilter;
+import com.luancomputacao.security.JWTAuthorizationFilter;
+import com.luancomputacao.utils.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -23,7 +26,7 @@ import java.util.Arrays;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserDetailServiceImpl userDetailServiceImpl;
+    private UserDetailsService userDetailsService;
 
     @Autowired
     private Environment environment;
@@ -57,13 +60,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated();
 
         httpSecurity.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil));
+        httpSecurity.addFilter(new JWTAuthorizationFilter(authenticationManager(), jwtUtil, userDetailsService));
 
         httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder
-                .userDetailsService(userDetailServiceImpl)
+                .userDetailsService(userDetailsService)
                 .passwordEncoder(bCryptPasswordEncoder());
     }
 
