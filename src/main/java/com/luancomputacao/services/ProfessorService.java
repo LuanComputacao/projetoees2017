@@ -3,7 +3,7 @@ package com.luancomputacao.services;
 import com.luancomputacao.domain.Professor;
 import com.luancomputacao.domain.enums.Perfil;
 import com.luancomputacao.repository.ProfessorRepository;
-import com.luancomputacao.utils.CpfUtils;
+import com.luancomputacao.utils.CpfUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -38,7 +38,7 @@ public class ProfessorService {
      * @return Verdadeiro se válido
      */
     Boolean validaCpf(String cpf) {
-        return CpfUtils.isCPF(cpf);
+        return CpfUtil.isCPF(cpf);
     }
 
     /**

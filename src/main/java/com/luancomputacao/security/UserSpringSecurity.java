@@ -17,9 +17,11 @@ public class UserSpringSecurity implements UserDetails {
     private Integer id;
     private String cpf;
     private String senha;
+    private Collection<? extends GrantedAuthority> authorities;
 
-    public Collection<? extends GrantedAuthority> authorities;
 
+    public UserSpringSecurity() {
+    }
 
     /**
      *
