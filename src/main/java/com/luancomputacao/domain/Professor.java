@@ -30,7 +30,7 @@ public class Professor implements Serializable {
     @Column(name = "nome", length = 128)
     private String nome;
 
-    @Column(name = "senha")
+    @Column(name = "senha", length = 256)
     @JsonIgnore
     private String senha;
 
