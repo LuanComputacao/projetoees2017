@@ -26,8 +26,8 @@ public class Materia implements Serializable {
     @Column(name = "nome")
     private String nome;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_disciplina", referencedColumnName = "id", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_disciplina", referencedColumnName = "id", nullable = false)
     @JsonBackReference
     private Disciplina disciplina;
 

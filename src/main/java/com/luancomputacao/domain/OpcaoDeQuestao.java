@@ -19,8 +19,8 @@ public class OpcaoDeQuestao implements Serializable {
     @Column(name = "id")
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_questao", referencedColumnName = "id", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_questao", referencedColumnName = "id", nullable = false)
     @JsonManagedReference
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private Questao questao;
@@ -34,7 +34,8 @@ public class OpcaoDeQuestao implements Serializable {
     public OpcaoDeQuestao() {
     }
 
-    public OpcaoDeQuestao(String texto) {
+    public OpcaoDeQuestao(Questao questao, String texto) {
+        this.questao = questao;
         this.texto = texto;
     }
 
