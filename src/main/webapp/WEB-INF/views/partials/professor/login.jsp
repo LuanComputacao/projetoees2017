@@ -8,7 +8,7 @@
 
     <div class="row">
         <div class="col">
-            <form action="POST" class="form-group mt-4">
+            <form action="/login" method="post" class="form-group mt-4">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div class="input-group-text">CPF</div>
@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="input-group text-center mt-3">
-                    <input type="button" class="col btn btn-success" value="Entrar">
+                    <input type="submit" class="col btn btn-success" value="Entrar">
                 </div>
             </form>
         </div>
