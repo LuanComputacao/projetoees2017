@@ -103,11 +103,29 @@ public class Questao implements Serializable {
 
     }
 
-    public Questao(Professor autor, Disciplina disciplina, Collection<Materia> materias, TipoDeQuestao tipoDeQuestaoEnum) {
+    /**
+     * @param autor
+     * @param disciplina
+     * @param materias
+     * @param tipoDeQuestaoEnum
+     */
+    public Questao(
+            Professor autor,
+            Boolean publica,
+            FaseDeEnsino faseDeEnsino,
+            Disciplina disciplina,
+            Collection<Materia> materias,
+            TipoDeQuestao tipoDeQuestaoEnum,
+            Float nivel,
+            String enunciado) {
         this.autor = autor;
+        this.publica = publica;
+        this.faseDeEnsino = faseDeEnsino;
         this.disciplina = disciplina;
         this.materias = materias;
         this.tipoDeQuestaoEnum = tipoDeQuestaoEnum;
+        this.enunciado = enunciado;
+        this.nivel = nivel;
         this.invalidada = false;
     }
 

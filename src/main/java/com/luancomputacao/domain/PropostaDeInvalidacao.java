@@ -34,7 +34,7 @@ public class PropostaDeInvalidacao implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonManagedReference
-    @JoinColumn(name = "id_moderador", referencedColumnName = "id", updatable = false, nullable = false)
+    @JoinColumn(name = "id_moderador", referencedColumnName = "id")
     private Professor moderador;
 
     @Column(name = "criado_em", updatable = false)
@@ -64,14 +64,15 @@ public class PropostaDeInvalidacao implements Serializable {
         this.questao = questao;
         this.professor = professor;
         this.moderador = moderador;
+        this.status = false;
     }
 
     public PropostaDeInvalidacao(Questao questao, Professor professor, String justificativa, String proposta) {
         this.questao = questao;
         this.professor = professor;
-        this.moderador = moderador;
         this.justificativa = justificativa;
         this.proposta = proposta;
+        this.status = false;
     }
 
     public Integer getId() {

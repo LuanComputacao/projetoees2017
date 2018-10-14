@@ -62,4 +62,12 @@ public class Teste implements Serializable {
     @OneToMany(mappedBy = "teste")
     @JsonBackReference
     private Collection<ProfessorUtilizaTeste> professorUtilizaTestes;
+
+    public Teste(String descricao, Professor autor, FaseDeEnsino faseDeEnsino, Disciplina disciplina, Collection<Questao> questoes) {
+        this.descricao = descricao;
+        this.autor = autor;
+        this.faseDeEnsino = faseDeEnsino;
+        this.disciplina = disciplina;
+        this.questoes = questoes;
+    }
 }
