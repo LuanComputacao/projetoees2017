@@ -5,6 +5,7 @@ import com.luancomputacao.dto.PropostaDeInvalidacaoDAO;
 import com.luancomputacao.services.PropostaDeInvalidacaoService;
 import com.luancomputacao.services.QuestaoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,6 +32,7 @@ public class PropostaDeInvalidacaoController {
         return mv;
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'MODERADOR')")
     @GetMapping(value = "{id}/")
     public ModelAndView analisarProposta(@PathVariable Integer id) {
         ModelAndView mv = new ModelAndView(this.analisar);
