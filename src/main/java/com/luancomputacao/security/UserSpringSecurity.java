@@ -1,40 +1,32 @@
 package com.luancomputacao.security;
 
+import java.util.Collection;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import com.luancomputacao.domain.enums.Perfil;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class UserSpringSecurity implements UserDetails {
-
     private static final long serialVersionUID = 1L;
-
 
     private Integer id;
     private String cpf;
     private String senha;
     private Collection<? extends GrantedAuthority> authorities;
 
-
     public UserSpringSecurity() {
     }
 
-    /**
-     *
-     * @param id
-     * @param cpf
-     * @param senha
-     * @param perfilSet
-     */
-    public UserSpringSecurity(Integer id, String cpf, String senha, Set<Perfil> perfilSet) {
+    public UserSpringSecurity(Integer id, String email, String senha, Set<Perfil> perfis) {
+        super();
         this.id = id;
-        this.cpf = cpf;
+        this.cpf = email;
         this.senha = senha;
-        this.authorities = perfilSet.stream().map(x -> new SimpleGrantedAuthority(x.getDescricao())).collect(Collectors.toList());
+        this.authorities = perfis.stream().map(x -> new SimpleGrantedAuthority(x.getDescricao())).collect(Collectors.toList());
     }
 
     public Integer getId() {

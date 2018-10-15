@@ -20,7 +20,9 @@ module.exports = {
     resolve: {
         alias: {
             vue: 'vue/dist/vue.js',
-            vuex: 'vuex/dist/vuex.js'
+            vuex: 'vuex/dist/vuex.min.js',
+            axios: 'axios/dist/axios.min.js',
+            jwtDecode: 'jwt-decode/build/jwt-decode.min.js'
         }
     },
 
@@ -47,16 +49,16 @@ module.exports = {
             chunkFilename: devMode ? '[id].css' : '[id].[chunkhash].css',
         }),
 
-        // new PurifyCSSPlugin({
-        //     paths: glob.sync([
-        //         path.join(__dirname, 'src/main/webapp/WEB-INF/**/*.jsp'),
-        //         path.join(__dirname, 'src/main/webapp/WEB-INF/**/*.tag')
-        //     ]),
-        //     minimize: !devMode,
-        //     purifyOptions: {
-        //         whitelist: []
-        //     }
-        // }),
+        new PurifyCSSPlugin({
+            paths: glob.sync([
+                path.join(__dirname, 'src/main/webapp/WEB-INF/**/*.jsp'),
+                path.join(__dirname, 'src/main/webapp/WEB-INF/**/*.tag')
+            ]),
+            minimize: !devMode,
+            purifyOptions: {
+                whitelist: []
+            }
+        }),
 
         // new CleanWebPackPlugin([sources.dist], {
         //         verbose: true,
