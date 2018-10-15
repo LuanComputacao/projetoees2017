@@ -1,6 +1,7 @@
 package com.luancomputacao.resource.webapp;
 
 import com.luancomputacao.domain.enums.Perfil;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,5 +16,10 @@ public class LoginController {
     public ModelAndView formLogin() {
         ModelAndView mv = new ModelAndView(formLogin);
         return mv;
+    }
+
+    @GetMapping("/test-login")
+    public ResponseEntity test() {
+        return ResponseEntity.ok().build();
     }
 }

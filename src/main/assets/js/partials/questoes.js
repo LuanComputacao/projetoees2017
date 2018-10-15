@@ -2,37 +2,12 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import {mapState, mapGetters, mapMutations} from 'vuex';
 
+import {store} from "../stores/questoes.store";
+
 Vue.use(Vuex);
 
+
 document.addEventListener("DOMContentLoaded", function () {
-
-    const store = new Vuex.Store({
-        state: {
-            materias: [],
-            materia: {},
-            disciplinas: [],
-            disciplina: {},
-            questoes: [],
-        },
-
-        getters: {
-            materiasDaDisciplina: state => disciplinaEscolhida => {
-                return state.disciplinas.filter(disciplina => {
-                    return disciplina.nome === disciplinaEscolhida;
-                }).map(disciplina => disciplina.materias)
-            }
-        },
-        mutations: {
-            setPage: state => paginaSelecionada => {
-                state.page = paginaSelecionada
-            },
-            setMateria: state => materiaSelecionada => {
-                state.materia = materiaSelecionada;
-            }
-        }
-
-    });
-
     let selectorDeMateria = new Vue({
         el: document.getElementById('js-search-questoes'),
         store,

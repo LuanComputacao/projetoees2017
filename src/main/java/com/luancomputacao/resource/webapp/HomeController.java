@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
+
 @Controller
 public class HomeController {
 
@@ -15,11 +17,21 @@ public class HomeController {
     @GetMapping(value = "/")
     public ModelAndView home() {
 
-        UserSpringSecurity userSS = UserService.autenticated();
+        boolean professor = false;
+        boolean moderador = false;
+
+        UserSpringSecurity userSS = UserService.authenticated();
+
+        System.out.println("home");
+        System.out.println(userSS);
+        if (userSS != null) {
+            professor = userSS.hasRole(Perfil.PROFESSOR);
+            moderador = userSS.hasRole(Perfil.MODERADOR);
+        }
 
         ModelAndView mv = new ModelAndView(this.home);
-        mv.addObject("professor", userSS.hasRole(Perfil.PROFESSOR));
-        mv.addObject("moderador", userSS.hasRole(Perfil.MODERADOR));
+        mv.addObject("professor", professor);
+        mv.addObject("moderador", moderador);
         return mv;
     }
 }

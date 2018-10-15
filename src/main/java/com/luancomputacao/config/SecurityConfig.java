@@ -38,9 +38,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     private static final String[] PUBLIC_MATCHERS = {
+            "/",
+            "/favicon**",
+            "/static/**",
+            "/login**",
             "/h2-console/**",
-            "/login",
-            "/static/**"
 
     };
 
