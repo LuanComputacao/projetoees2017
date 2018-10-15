@@ -1,13 +1,11 @@
 package com.luancomputacao.resource.webapp;
 
 import com.luancomputacao.domain.enums.Perfil;
-import com.luancomputacao.security.UserSpringSecurity;
+import com.luancomputacao.security.UserSS;
 import com.luancomputacao.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class HomeController {
@@ -20,7 +18,7 @@ public class HomeController {
         boolean professor = false;
         boolean moderador = false;
 
-        UserSpringSecurity userSS = UserService.authenticated();
+        UserSS userSS = UserService.authenticated();
 
         System.out.println("home");
         System.out.println(userSS);

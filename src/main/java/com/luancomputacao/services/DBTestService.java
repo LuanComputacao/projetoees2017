@@ -4,8 +4,6 @@ import com.luancomputacao.domain.*;
 import com.luancomputacao.domain.enums.Perfil;
 import com.luancomputacao.domain.enums.TipoDeQuestao;
 import com.luancomputacao.repository.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,12 +11,9 @@ import org.springframework.stereotype.Service;
 import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 @Service
 public class DBTestService {
-
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -58,7 +53,7 @@ public class DBTestService {
         Disciplina disciplina1 = new Disciplina("Matemática");
         Disciplina disciplina2 = new Disciplina("Português");
 
-        List<Disciplina> disciplinas = disciplinaRepository.saveAll(Arrays.asList(
+        disciplinaRepository.saveAll(Arrays.asList(
                 disciplina1,
                 disciplina2
         ));
@@ -129,7 +124,7 @@ public class DBTestService {
         OpcaoDeQuestao opcaoDeQuestao3_4 = new OpcaoDeQuestao(questao3, "Lalala é a pessoa principal de uma oração");
         OpcaoDeQuestao opcaoDeQuestao3_5 = new OpcaoDeQuestao(questao3, "Bla Bla Bla é a pessoa principal de uma oração");
 
-        List<OpcaoDeQuestao> opcoesDeQuestao = opcaoDeQuestaoRepository.saveAll(Arrays.asList(
+        opcaoDeQuestaoRepository.saveAll(Arrays.asList(
                 opcaoDeQuestao3_1,
                 opcaoDeQuestao3_2,
                 opcaoDeQuestao3_3,

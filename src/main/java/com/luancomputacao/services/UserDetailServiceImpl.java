@@ -2,7 +2,7 @@ package com.luancomputacao.services;
 
 import com.luancomputacao.domain.Professor;
 import com.luancomputacao.repository.ProfessorRepository;
-import com.luancomputacao.security.UserSpringSecurity;
+import com.luancomputacao.security.UserSS;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,6 +22,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException(cpf);
         }
 
-        return new UserSpringSecurity(professor.getId(), professor.getCpf(), professor.getSenha(), professor.getPerfis());
+        return new UserSS(professor.getId(), professor.getCpf(), professor.getSenha(), professor.getPerfis());
     }
 }

@@ -1,7 +1,7 @@
 package com.luancomputacao.resource.rest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.luancomputacao.security.UserSpringSecurity;
+import com.luancomputacao.security.UserSS;
 import com.luancomputacao.services.UserService;
 import com.luancomputacao.utils.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class AuthResource {
 
     @RequestMapping(value = "/refresh_token", method = RequestMethod.POST)
     public ResponseEntity<Void> refreshToken(HttpServletResponse response) {
-        UserSpringSecurity user = UserService.authenticated();
+        UserSS user = UserService.authenticated();
         System.out.println(user);
 
         String token = jwtUtil.generateToken(user.getUsername());

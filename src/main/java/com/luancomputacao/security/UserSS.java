@@ -10,7 +10,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 
-public class UserSpringSecurity implements UserDetails {
+public class UserSS implements UserDetails {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
@@ -18,10 +18,10 @@ public class UserSpringSecurity implements UserDetails {
     private String senha;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserSpringSecurity() {
+    public UserSS() {
     }
 
-    public UserSpringSecurity(Integer id, String email, String senha, Set<Perfil> perfis) {
+    public UserSS(Integer id, String email, String senha, Set<Perfil> perfis) {
         super();
         this.id = id;
         this.cpf = email;
