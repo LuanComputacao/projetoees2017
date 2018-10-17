@@ -1,14 +1,15 @@
 package com.luancomputacao.services;
 
-import com.luancomputacao.security.UserSS;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 public class UserService {
 
 
-    public static UserSS authenticated() {
+    public static String authenticated() {
         try {
-            return (UserSS) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            System.out.println(principal);
+            return principal != "anonymousUser" ? (String) principal : null;
         } catch (Exception e) {
             return null;
         }

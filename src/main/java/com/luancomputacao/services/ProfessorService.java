@@ -3,6 +3,7 @@ package com.luancomputacao.services;
 import com.luancomputacao.domain.Professor;
 import com.luancomputacao.domain.enums.Perfil;
 import com.luancomputacao.repository.ProfessorRepository;
+import com.luancomputacao.security.UserSS;
 import com.luancomputacao.utils.CpfUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -122,5 +123,19 @@ public class ProfessorService {
 
     public Professor encontrarPorCPF(String cpf) {
         return professorRepository.findByCpf(cpf);
+    }
+
+
+    public UserSS obterUserSS(String authenticatedUser) {
+        Professor professor = professorRepository.findOneByCpf(authenticatedUser);
+        return professor != null ? new UserSS(professor) : null;
+    }
+
+    public Boolean eProfessor(UserSS userSS) {
+        return userSS != null && userSS.hasRole(Perfil.PROFESSOR);
+    }
+
+    public Boolean eModerador(UserSS userSS) {
+        return userSS != null && userSS.hasRole(Perfil.MODERADOR);
     }
 }
