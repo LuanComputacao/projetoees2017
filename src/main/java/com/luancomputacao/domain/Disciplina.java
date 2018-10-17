@@ -62,6 +62,30 @@ public class Disciplina implements Serializable {
         this.nome = nome;
     }
 
+    public Collection<Materia> getMaterias() {
+        return materias;
+    }
+
+    public void setMaterias(Collection<Materia> materias) {
+        this.materias = materias;
+    }
+
+    public Collection<Questao> getQuestoes() {
+        return questoes;
+    }
+
+    public void setQuestoes(Collection<Questao> questoes) {
+        this.questoes = questoes;
+    }
+
+    public Collection<Teste> getTestes() {
+        return testes;
+    }
+
+    public void setTestes(Collection<Teste> testes) {
+        this.testes = testes;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
