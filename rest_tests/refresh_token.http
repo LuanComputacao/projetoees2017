@@ -1,7 +1,7 @@
 POST /auth/refresh_token HTTP/1.1
 Host: localhost:8080
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5NDU0OTcyNzA3MSIsImV4cCI6MTUzOTYzMDIxN30.dcvHF6Ts8_bkScTa43g5IC4YABuTtDR50ltVKPAKAkLmgwqFL1CFIjjl-90iHhvxH_oPtDsuQR4at9TJ8RP35w
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5NDU0OTcyNzA3MSIsImV4cCI6MTUzOTc5MDExMH0.leBTO5Jxeu5BpN6kP4zCcKULPbFRjkitV8Qh0w5xCt2Hg5xqfvHAk_CWRVtcRh-w034sPkCk4VxtissI_4Jmig
 Cache-Control: no-cache
 Postman-Token: 6de74d3a-69cc-4141-800b-3e356c05025d
 

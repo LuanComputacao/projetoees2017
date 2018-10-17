@@ -1,13 +1,14 @@
 package com.luancomputacao.security;
 
-import java.util.Collection;
-import java.util.Set;
-import java.util.stream.Collectors;
-
+import com.luancomputacao.domain.Professor;
 import com.luancomputacao.domain.enums.Perfil;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 
 public class UserSS implements UserDetails {
@@ -21,12 +22,20 @@ public class UserSS implements UserDetails {
     public UserSS() {
     }
 
-    public UserSS(Integer id, String email, String senha, Set<Perfil> perfis) {
+    public UserSS(Integer id, String cpf, String senha, Set<Perfil> perfis) {
         super();
         this.id = id;
-        this.cpf = email;
+        this.cpf = cpf;
         this.senha = senha;
         this.authorities = perfis.stream().map(x -> new SimpleGrantedAuthority(x.getDescricao())).collect(Collectors.toList());
+    }
+
+    public UserSS(Professor professor) {
+        super();
+        this.id = professor.getId();
+        this.cpf = professor.getCpf();
+        this.senha = professor.getSenha();
+        this.authorities = professor.getPerfis().stream().map(x -> new SimpleGrantedAuthority(x.getDescricao())).collect(Collectors.toList());
     }
 
     public Integer getId() {

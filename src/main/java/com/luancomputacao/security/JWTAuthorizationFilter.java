@@ -1,7 +1,6 @@
 package com.luancomputacao.security;
 
 import com.luancomputacao.utils.JWTUtil;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,8 +17,7 @@ import java.io.IOException;
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
-    @Value("${jwt.cookie.name}")
-    private String jwtCookieName;
+    private String jwtCookieName = "mr_xavier_k";
 
     UserDetailsService userDetailsService;
     JWTUtil jwtUtil;
@@ -42,11 +40,8 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
         Cookie[] cookies = httpServletRequest.getCookies();
         Cookie jwtCookie = null;
-        if (cookies != null) {
-            for (Cookie cookie : cookies)
-                if (cookie.getName().equals(jwtCookieName)) jwtCookie = cookie;
-        }
-
+        if (cookies != null) for (Cookie cookie : cookies)
+            if (cookie.getName().equals(jwtCookieName)) jwtCookie = new Cookie(cookie.getName(), cookie.getValue());
 
         if (header != null && header.startsWith("Bearer ")) {
             UsernamePasswordAuthenticationToken authenticationToken = getAuthentication(httpServletRequest,
