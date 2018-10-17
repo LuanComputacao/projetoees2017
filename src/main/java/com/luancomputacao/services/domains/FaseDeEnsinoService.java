@@ -1,4 +1,4 @@
-package com.luancomputacao.services;
+package com.luancomputacao.services.domains;
 
 import com.luancomputacao.domain.FaseDeEnsino;
 import com.luancomputacao.repository.FaseDeEnsinoRepository;

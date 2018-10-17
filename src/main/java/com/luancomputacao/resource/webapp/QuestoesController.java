@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.luancomputacao.domain.Questao;
 import com.luancomputacao.security.UserSS;
 import com.luancomputacao.services.*;
+import com.luancomputacao.services.domains.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,10 +59,12 @@ public class QuestoesController {
     public ModelAndView editarQuestao(@PathVariable Integer id){
         ModelAndView mv = new ModelAndView(this.editarQuestao);
 
+        UserSS userSS = professorService.obterUserSS(UserService.authenticated());
+        mv.addObject("professor", professorService.eProfessor(userSS));
+        mv.addObject("moderador", professorService.eModerador(userSS));
+
         mv.addObject("disciplinas",  disciplinaService.listar());
-
         mv.addObject("materias",  materiaService.listar());
-
         mv.addObject("questao", questaoService.encontrar(id));
         return mv;
     }
@@ -70,6 +73,11 @@ public class QuestoesController {
     @GetMapping(value = "criar/")
     public ModelAndView criarQuestao() {
         ModelAndView mv = new ModelAndView(this.criarQuestao);
+
+        UserSS userSS = professorService.obterUserSS(UserService.authenticated());
+        mv.addObject("professor", professorService.eProfessor(userSS));
+        mv.addObject("moderador", professorService.eModerador(userSS));
+
         mv.addObject("disciplinas",  disciplinaService.listar());
         mv.addObject("materias",  materiaService.listar());
         mv.addObject("fasesDeEnsino",  faseDeEnsinoService.listar());
@@ -79,6 +87,11 @@ public class QuestoesController {
     @GetMapping(value = "{id}/")
     public ModelAndView visualizarQuestao(@PathVariable Integer id) throws JsonProcessingException {
         ModelAndView mv = new ModelAndView(this.questao);
+
+        UserSS userSS = professorService.obterUserSS(UserService.authenticated());
+        mv.addObject("professor", professorService.eProfessor(userSS));
+        mv.addObject("moderador", professorService.eModerador(userSS));
+
         ObjectMapper objectMapper = new ObjectMapper();
         Questao questao = questaoService.encontrar(id);
         mv.addObject("questao", questao);

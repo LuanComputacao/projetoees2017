@@ -1,7 +1,7 @@
 package com.luancomputacao.resource.rest;
 
 import com.luancomputacao.security.UserSS;
-import com.luancomputacao.services.ProfessorService;
+import com.luancomputacao.services.domains.ProfessorService;
 import com.luancomputacao.services.UserService;
 import com.luancomputacao.utils.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;

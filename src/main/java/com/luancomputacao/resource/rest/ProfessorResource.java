@@ -2,7 +2,7 @@ package com.luancomputacao.resource.rest;
 
 import com.luancomputacao.domain.Professor;
 import com.luancomputacao.dto.ProfessorDTO;
-import com.luancomputacao.services.ProfessorService;
+import com.luancomputacao.services.domains.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
