@@ -1,11 +1,10 @@
-package com.luancomputacao.services;
+package com.luancomputacao.services.domains;
 
 import com.luancomputacao.domain.Professor;
 import com.luancomputacao.domain.PropostaDeInvalidacao;
 import com.luancomputacao.domain.Questao;
 import com.luancomputacao.dto.PropostaDeInvalidacaoDAO;
 import com.luancomputacao.repository.PropostaDeInvalidacaoRepository;
-import com.luancomputacao.repository.QuestaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -2,8 +2,8 @@ package com.luancomputacao.resource.webapp;
 
 import com.luancomputacao.domain.PropostaDeInvalidacao;
 import com.luancomputacao.dto.PropostaDeInvalidacaoDAO;
-import com.luancomputacao.services.PropostaDeInvalidacaoService;
-import com.luancomputacao.services.QuestaoService;
+import com.luancomputacao.services.domains.PropostaDeInvalidacaoService;
+import com.luancomputacao.services.domains.QuestaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;

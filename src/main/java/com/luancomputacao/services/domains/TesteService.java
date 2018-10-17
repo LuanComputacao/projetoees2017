@@ -1,4 +1,4 @@
-package com.luancomputacao.services;
+package com.luancomputacao.services.domains;
 
 import org.springframework.stereotype.Service;
 
