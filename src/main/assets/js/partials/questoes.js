@@ -1,8 +1,14 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import {mapState, mapGetters, mapMutations} from 'vuex';
-
 import {store} from "../stores/questoes.store";
+import {
+    SET_PAGE,
+    SET_MATERIA,
+    SET_QUESTOES,
+    SET_DISCIPLINAS,
+    SET_DISCIPLINA
+} from "../stores/questoes.store";
 
 Vue.use(Vuex);
 
@@ -26,6 +32,11 @@ document.addEventListener("DOMContentLoaded", function () {
             rows: []
         },
 
+        mounted() {
+            this[SET_QUESTOES](JSON.parse(this.$el.dataset.questoes));
+            this[SET_DISCIPLINAS](JSON.parse(this.$el.dataset.disciplinas));
+        },
+
         computed: {
             ...mapState([
                 'materias',
@@ -35,15 +46,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 'questoes'
             ]),
             ...mapGetters(['materiasDaDisciplina']),
-            ...mapMutations({})
         },
         methods: {
-            setPaginaAtual: page => {
-                this.$store.commit('setPage', page)
-            },
-            doSomething: function () {
-
-            }
+            ...mapMutations([
+                SET_PAGE,
+                SET_MATERIA,
+                SET_QUESTOES,
+                SET_DISCIPLINAS,
+                SET_DISCIPLINA
+            ]),
         }
     });
 });

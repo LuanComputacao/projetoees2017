@@ -20,7 +20,13 @@
         <tag-class>com.luancomputacao.customtags.PrintSafe</tag-class>
         <body-content>empty</body-content>
         <attribute>
-            <name>stringJson</name>
+            <description>
+                The Json string to be scaped
+            </description>
+            <name>json</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
 

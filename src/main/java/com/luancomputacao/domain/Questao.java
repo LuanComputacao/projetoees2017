@@ -1,6 +1,7 @@
 package com.luancomputacao.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.luancomputacao.domain.enums.TipoDeQuestao;
@@ -30,11 +31,13 @@ public class Questao implements Serializable {
     @Column(name = "criado_em", updatable = false)
     @Temporal(TemporalType.DATE)
     @CreatedDate
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private Date criadoEm;
 
     @Column(name = "atualizado_em")
     @Temporal(TemporalType.DATE)
     @LastModifiedDate
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private Date atualizadoEm;
 
     @Column(name = "enunciado")

@@ -19,8 +19,8 @@ export let store = new Vuex.Store({
         [SET_AUTHTOKEN](state, authToken) {
             this.state.authToken = authToken
         },
-        [SET_USERNAME](state, value) {
-            this.state.username = value.target.value
+        [SET_USERNAME](state, event) {
+            this.state.username = event.target.value
         }
     }
 });

@@ -2,10 +2,12 @@ package com.luancomputacao.resource.webapp;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.luancomputacao.domain.Disciplina;
 import com.luancomputacao.domain.Questao;
 import com.luancomputacao.security.UserSS;
-import com.luancomputacao.services.*;
+import com.luancomputacao.services.UserService;
 import com.luancomputacao.services.domains.*;
+import jdk.nashorn.internal.ir.debug.JSONWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(value = "/questoes")
@@ -48,23 +51,27 @@ public class QuestoesController {
         mv.addObject("professor", professorService.eProfessor(userSS));
         mv.addObject("moderador", professorService.eModerador(userSS));
 
+        List<Disciplina> disciplinas = disciplinaService.listar();
+
+        System.out.println();
+
         List<Questao> questoes = questaoService.listar();
-        mv.addObject("questoes", questoes);
-        mv.addObject("questoesJSON", objectMapper.writeValueAsString(questoes));
+        mv.addObject("disciplinas", objectMapper.writeValueAsString(disciplinas));
+        mv.addObject("questoes", objectMapper.writeValueAsString(questoes));
 
         return mv;
     }
 
     @GetMapping(value = "editar/{id}/")
-    public ModelAndView editarQuestao(@PathVariable Integer id){
+    public ModelAndView editarQuestao(@PathVariable Integer id) {
         ModelAndView mv = new ModelAndView(this.editarQuestao);
 
         UserSS userSS = professorService.obterUserSS(UserService.authenticated());
         mv.addObject("professor", professorService.eProfessor(userSS));
         mv.addObject("moderador", professorService.eModerador(userSS));
 
-        mv.addObject("disciplinas",  disciplinaService.listar());
-        mv.addObject("materias",  materiaService.listar());
+        mv.addObject("disciplinas", disciplinaService.listar());
+        mv.addObject("materias", materiaService.listar());
         mv.addObject("questao", questaoService.encontrar(id));
         return mv;
     }
@@ -78,9 +85,9 @@ public class QuestoesController {
         mv.addObject("professor", professorService.eProfessor(userSS));
         mv.addObject("moderador", professorService.eModerador(userSS));
 
-        mv.addObject("disciplinas",  disciplinaService.listar());
-        mv.addObject("materias",  materiaService.listar());
-        mv.addObject("fasesDeEnsino",  faseDeEnsinoService.listar());
+        mv.addObject("disciplinas", disciplinaService.listar());
+        mv.addObject("materias", materiaService.listar());
+        mv.addObject("fasesDeEnsino", faseDeEnsinoService.listar());
         return mv;
     }
 
