@@ -1,5 +1,6 @@
 package com.luancomputacao.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -32,8 +33,9 @@ public class ProfessorUtilizaTeste implements Serializable {
     private Teste teste;
 
     @Column(name = "data_utilizacao", updatable = false)
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private Date dataUtilizacao;
 
     public ProfessorUtilizaTeste(Professor professor, Teste teste) {
