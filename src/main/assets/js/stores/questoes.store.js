@@ -10,6 +10,7 @@ export const SET_MATERIAS = 'setMaterias';
 export const SET_QUESTOES = 'setQuestoes';
 export const SET_DISCIPLINAS = 'setDisciplinas';
 export const SET_DISCIPLINA = 'setDisciplina';
+export const SET_QUESTOES_API = 'setQuestoesApi';
 
 export let store = new Vuex.Store({
     state: {
@@ -18,6 +19,7 @@ export let store = new Vuex.Store({
         disciplinas: [],
         disciplina: {},
         questoes: [],
+        questoesApi: "",
     },
 
     getters: {
@@ -45,6 +47,9 @@ export let store = new Vuex.Store({
 
             state.materias = typeof state.disciplina === 'undefined' ? [] : state.disciplina.materias;
         },
+        [SET_QUESTOES_API](state, url) {
+            state.questoesApi = url;
+        }
     }
 
 });

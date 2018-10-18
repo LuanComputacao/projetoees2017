@@ -1,7 +1,10 @@
 # Good links used to develop
 
 ## Java
-[JSP - Custom Tags](https://www.tutorialspoint.com/jsp/jsp_custom_tags.htm)
+* [JSP - Custom Tags](https://www.tutorialspoint.com/jsp/jsp_custom_tags.htm)
+
+## Spring Boot
+* [REST Query Language with Spring and JPA Criteria](https://www.baeldung.com/rest-search-language-spring-jpa-criteria)
 
 ## ECMAScript 6
 * [What’s the difference between JavaScript and ECMAScript?](https://medium.freecodecamp.org/whats-the-difference-between-javascript-and-ecmascript-cba48c73a2b5)

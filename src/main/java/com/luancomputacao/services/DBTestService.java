@@ -85,7 +85,7 @@ public class DBTestService {
                 disciplina1,
                 Arrays.asList(materia1, materia2),
                 TipoDeQuestao.DISCURSIVA,
-                (float) 3.5,
+                (float) 1.5,
                 "Calcule x+2=3"
         );
         questao1.setEspacos(3);
@@ -107,8 +107,8 @@ public class DBTestService {
                 disciplina1,
                 Collections.singletonList(materia4),
                 TipoDeQuestao.OBJETIVA,
-                (float) 3.5,
-                "Calcule x+2=3"
+                (float) 2.5,
+                "Escolha a afirmativa corretas"
         );
 
         questaoRepository.saveAll(Arrays.asList(

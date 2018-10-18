@@ -49,16 +49,16 @@ module.exports = {
             chunkFilename: devMode ? '[id].css' : '[id].[chunkhash].css',
         }),
 
-        new PurifyCSSPlugin({
-            paths: glob.sync([
-                path.join(__dirname, 'src/main/webapp/WEB-INF/**/*.jsp'),
-                path.join(__dirname, 'src/main/webapp/WEB-INF/**/*.tag')
-            ]),
-            minimize: !devMode,
-            purifyOptions: {
-                whitelist: []
-            }
-        }),
+        // new PurifyCSSPlugin({
+        //     paths: glob.sync([
+        //         path.join(__dirname, 'src/main/webapp/WEB-INF/**/*.jsp'),
+        //         path.join(__dirname, 'src/main/webapp/WEB-INF/**/*.tag')
+        //     ]),
+        //     minimize: !devMode,
+        //     purifyOptions: {
+        //         whitelist: []
+        //     }
+        // }),
 
         // new CleanWebPackPlugin([sources.dist], {
         //         verbose: true,

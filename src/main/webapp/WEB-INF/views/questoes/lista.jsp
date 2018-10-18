@@ -9,12 +9,14 @@
         <div id="js-search-questoes"
              data-questoes="<ct:PrintSafe json="${questoes}"/>"
              data-disciplinas="<ct:PrintSafe json="${disciplinas}"/>"
+             data-questoes-api="${pageContext.request.contextPath}/api/questaos/"
         >
             <div class="row pt-3 pb-3 text-center">
                 <div class="col">
                     <h1>Questões</h1>
                 </div>
             </div>
+
             <div class="row pt-3 pb-3">
 
                 <div class="col">
@@ -37,6 +39,7 @@
                 </div>
 
                 <div class="col text-center">
+                    <button class="btn btn-primary" @click="retriveQuestions">Procurar</button>
                     <a class="btn btn-primary" href="${pageContext.request.contextPath}/questoes/procurar">Procurar</a>
                 </div>
 
@@ -46,9 +49,51 @@
                 </div>
             </div>
 
-
             <div id="js-tabela-questoes" class="m3 border p-3">
+                <tp:table_dark>
+                    <jsp:attribute name="header">
+                        <td>ID</td>
+                        <td>Pública</td>
+                        <td>Invalidada</td>
+                        <td>Enunciado</td>
+                        <td>Tipo</td>
+                        <td>Nível</td>
+                        <td>Visualizar</td>
+                        <td>Editar</td>
+                        <td>Apagar</td>
+                    </jsp:attribute>
 
+                    <jsp:attribute name="content">
+                        <tr v-for="questao in questoes">
+                            <td>{{questao.id}}</td>
+                            <td>
+                                <span v-if="questao.publica">Sim</span>
+                                <span v-else="questao.publica">Não</span>
+                            </td>
+                            <td>
+                                <span v-if="questao.invalidada">Sim</span>
+                                <span v-else="questao.invalidada">Não</span>
+                            </td>
+                            <td>{{questao.enunciado}}</td>
+                            <td>{{questao.tipoDeQuestaoEnum}}</td>
+                            <td>{{questao.nivel}}</td>
+                            <td class="text-center text-success">
+                                <a :href="'${pageContext.request.contextPath}/questoes/'+questao.id+'/'">
+                                    <span class="fas fa-external-link-alt"></span>
+                                </a>
+                            </td>
+                            <td class="text-center text-info">
+                                <a :href="'${pageContext.request.contextPath}/questoes/editar/'+questao.id+'/'">
+                                    <span class="fas fa-pencil-alt"></span>
+                                </a>
+                            </td>
+                            <td class="text-center text-warning">
+                                <span class="fas fa-eraser pointer" :id="'js-apaga-questao-'+questao.id"></span>
+                            </td>
+                        </tr>
+
+                    </jsp:attribute>
+                </tp:table_dark>
             </div>
         </div>
 

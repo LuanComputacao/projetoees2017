@@ -1,14 +1,17 @@
+import axios from 'axios';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import {mapState, mapGetters, mapMutations} from 'vuex';
 import {store} from "../stores/questoes.store";
 import {
-    SET_PAGE,
-    SET_MATERIA,
-    SET_QUESTOES,
+    SET_DISCIPLINA,
     SET_DISCIPLINAS,
-    SET_DISCIPLINA
+    SET_MATERIA,
+    SET_PAGE,
+    SET_QUESTOES,
+    SET_QUESTOES_API,
 } from "../stores/questoes.store";
+import {SET_AUTHTOKEN} from "../stores/user.store";
 
 Vue.use(Vuex);
 
@@ -33,8 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
         },
 
         mounted() {
-            this[SET_QUESTOES](JSON.parse(this.$el.dataset.questoes));
             this[SET_DISCIPLINAS](JSON.parse(this.$el.dataset.disciplinas));
+            this[SET_QUESTOES](JSON.parse(this.$el.dataset.questoes));
+            this[SET_QUESTOES_API](this.$el.dataset.questoesApi)
         },
 
         computed: {
@@ -43,18 +47,39 @@ document.addEventListener("DOMContentLoaded", function () {
                 'materia',
                 'disciplinas',
                 'disciplina',
-                'questoes'
+                'questoes',
+                'questoesApi'
             ]),
             ...mapGetters(['materiasDaDisciplina']),
         },
+
         methods: {
             ...mapMutations([
-                SET_PAGE,
-                SET_MATERIA,
-                SET_QUESTOES,
+                SET_DISCIPLINA,
                 SET_DISCIPLINAS,
-                SET_DISCIPLINA
+                SET_MATERIA,
+                SET_PAGE,
+                SET_QUESTOES,
+                SET_QUESTOES_API
             ]),
+
+            retriveQuestions() {
+                axios
+                    .get(
+                        this.questoesApi
+                    )
+                    .then(response => {
+                        let authToken = typeof response.headers.authorization !== 'undefined' ? response.headers.authorization : "";
+                        this[SET_AUTHTOKEN](authToken);
+                        localStorage.setItem('mr_xavier_k', authToken);
+                        that.saveCookie();
+                        that.testAuth();
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    });
+                console.log("oi");
+            }
         }
     });
 });
