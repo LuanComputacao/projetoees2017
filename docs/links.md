@@ -5,6 +5,7 @@
 
 ## Spring Boot
 * [REST Query Language with Spring and JPA Criteria](https://www.baeldung.com/rest-search-language-spring-jpa-criteria)
+* [JACKSON ANNOTATIONS FOR JSON](https://springframework.guru/jackson-annotations-json/)
 
 ## ECMAScript 6
 * [What’s the difference between JavaScript and ECMAScript?](https://medium.freecodecamp.org/whats-the-difference-between-javascript-and-ecmascript-cba48c73a2b5)
