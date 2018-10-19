@@ -7,7 +7,6 @@ import com.luancomputacao.domain.Questao;
 import com.luancomputacao.security.UserSS;
 import com.luancomputacao.services.UserService;
 import com.luancomputacao.services.domains.*;
-import jdk.nashorn.internal.ir.debug.JSONWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(value = "/questoes")
@@ -63,16 +61,19 @@ public class QuestoesController {
     }
 
     @GetMapping(value = "editar/{id}/")
-    public ModelAndView editarQuestao(@PathVariable Integer id) {
+    public ModelAndView editarQuestao(@PathVariable Integer id) throws JsonProcessingException {
         ModelAndView mv = new ModelAndView(this.editarQuestao);
-
+        ObjectMapper objectMapper = new ObjectMapper();
         UserSS userSS = professorService.obterUserSS(UserService.authenticated());
         mv.addObject("professor", professorService.eProfessor(userSS));
         mv.addObject("moderador", professorService.eModerador(userSS));
 
-        mv.addObject("disciplinas", disciplinaService.listar());
-        mv.addObject("materias", materiaService.listar());
+        mv.addObject("disciplinas", objectMapper.writeValueAsString(disciplinaService.listar()));
+        mv.addObject("materias", objectMapper.writeValueAsString(materiaService.listar()));
         mv.addObject("questao", questaoService.encontrar(id));
+        mv.addObject("questaoJSON", objectMapper.writeValueAsString(questaoService.encontrar(id)));
+        mv.addObject("fasesDeEnsinoJSON", objectMapper.writeValueAsString(faseDeEnsinoService.listar()));
+
         return mv;
     }
 
