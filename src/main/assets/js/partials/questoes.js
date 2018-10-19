@@ -11,7 +11,6 @@ import {
     SET_QUESTOES,
     SET_QUESTOES_API,
 } from "../stores/questoes.store";
-import {SET_AUTHTOKEN} from "../stores/user.store";
 
 Vue.use(Vuex);
 
@@ -21,18 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
         el: document.getElementById('js-search-questoes'),
         store,
         data: {
-            filter: '',
-            page: 1,
-            per_page: 1,
-            columns: [
-                {label: 'ID', field: 'id', align: 'center', filterable: false},
-                {label: 'Invalidada', field: 'invalidada', filterable: true},
-                {label: 'Públicada', field: 'publica'},
-                {label: 'Enunciado', field: 'enunciado'},
-                {label: 'Nível', field: 'nivel', align: 'center', sortable: false},
-                {label: 'Disciplina', field: 'disciplina.nome', align: 'right', sortable: false}
-            ],
-            rows: []
+            api: {
+                byDisciplina: "search/findByDisciplinaId/?id=",
+                byMateria: "search/findByMateriasId/?id="
+            }
         },
 
         mounted() {
@@ -63,22 +54,44 @@ document.addEventListener("DOMContentLoaded", function () {
                 SET_QUESTOES_API
             ]),
 
-            retriveQuestions() {
+            retriveQuestions(event) {
+                if (typeof this.disciplina.id !== 'undefined' && typeof this.materia.id === 'undefined') {
+                    this.retrieveByDisciplina();
+                    console.log('retrieveByDisciplina');
+                } else if (typeof this.materia.id !== 'undefined') {
+                    this.retrieveByMateria();
+                    console.log('retrieveByMateria');
+                }
+            },
+            retrieveByDisciplina() {
                 axios
                     .get(
-                        this.questoesApi
+                        this.questoesApi + this.api.byDisciplina + this.disciplina.id
                     )
                     .then(response => {
-                        let authToken = typeof response.headers.authorization !== 'undefined' ? response.headers.authorization : "";
-                        this[SET_AUTHTOKEN](authToken);
-                        localStorage.setItem('mr_xavier_k', authToken);
-                        that.saveCookie();
-                        that.testAuth();
+                        if (typeof response.data.content[0].id !== 'undefined')
+                            this[SET_QUESTOES](response.data.content);
+                        else
+                            this[SET_QUESTOES]([]);
                     })
                     .catch(error => {
                         console.log(error)
                     });
-                console.log("oi");
+            },
+            retrieveByMateria() {
+                axios
+                    .get(
+                        this.questoesApi + this.api.byMateria + this.materia.id
+                    )
+                    .then(response => {
+                        if (typeof response.data.content[0].id !== 'undefined')
+                            this[SET_QUESTOES](response.data.content);
+                        else
+                            this[SET_QUESTOES]([]);
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    });
             }
         }
     });

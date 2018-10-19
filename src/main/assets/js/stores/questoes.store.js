@@ -33,8 +33,10 @@ export let store = new Vuex.Store({
         [SET_PAGE](state, paginaSelecionada) {
             state.page = paginaSelecionada;
         },
-        [SET_MATERIA](state, materiaSelecionada) {
-            state.materia = materiaSelecionada;
+        [SET_MATERIA](state, event) {
+            if (state.materias.length > 0) {
+                state.materia = this.state.materias.find(x => x.id === parseInt(event.target.value));
+            }
         },
         [SET_QUESTOES](state, questoes) {
             state.questoes = questoes;

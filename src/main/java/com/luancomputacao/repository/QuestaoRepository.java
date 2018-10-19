@@ -13,10 +13,15 @@ public interface QuestaoRepository extends JpaRepository<Questao, Integer> {
 
     List<Questao> findByAutorCpf(@Param("cpf") String cpf);
 
+    List<Questao> findByDisciplinaNome(@Param("nome") String nome);
+
+    List<Questao> findByDisciplinaId(@Param("id") Integer id);
+
     List<Questao> findByMateriasNome(@Param("nome") String nome);
 
-    List<Questao> findByMateriasIdIn(@Param("ids") List<Integer> inventoryIdList);
+    @Query("select q from Questao q inner join q.materias m where m.id = ?1")
+    List<Questao> findByMateriasId(@Param("id") Integer id);
 
-    List<Questao> findByMateriasId(@Param("id") Integer nome);
+    List<Questao> findByMateriasIdIn(@Param("ids") List<Integer> inventoryIdList);
 
 }
