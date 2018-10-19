@@ -22,7 +22,8 @@ module.exports = {
             vue: 'vue/dist/vue.js',
             vuex: 'vuex/dist/vuex.min.js',
             axios: 'axios/dist/axios.min.js',
-            jwtDecode: 'jwt-decode/build/jwt-decode.min.js'
+            jwtDecode: 'jwt-decode/build/jwt-decode.min.js',
+            momentjs: 'moment/min/moment.min.js'
         }
     },
 
