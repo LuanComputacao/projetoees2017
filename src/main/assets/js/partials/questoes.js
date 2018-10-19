@@ -57,10 +57,8 @@ document.addEventListener("DOMContentLoaded", function () {
             retriveQuestions(event) {
                 if (typeof this.disciplina.id !== 'undefined' && typeof this.materia.id === 'undefined') {
                     this.retrieveByDisciplina();
-                    console.log('retrieveByDisciplina');
-                } else if (typeof this.materia.id !== 'undefined') {
+                } else if (typeof this.materia.id !== 'undefined' ) {
                     this.retrieveByMateria();
-                    console.log('retrieveByMateria');
                 }
             },
             retrieveByDisciplina() {

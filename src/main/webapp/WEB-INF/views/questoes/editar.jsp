@@ -5,13 +5,12 @@
 
 <tp:base>
     <jsp:attribute name="body">
-
-        <div id="js-form-questao">
             <form action="${pageContext.request.contextPath}/questoes/editar/${questao.id}/" method="post">
                 <tp:form-questao
-                        questao="${questao}"
+                        questaoJSON="${questaoJSON}"
                         disciplinas="${disciplinas}"
                         materias="${materias}"
+                        fasesDeEnsinoJSON="${fasesDeEnsinoJSON}"
                 >
                 </tp:form-questao>
 
@@ -23,9 +22,7 @@
                             <%-- - - - - - -  Botões end - - - - - - - --%>
                     </div>
                 </div>
-
             </form>
-        </div>
 
     </jsp:attribute>
 </tp:base>
