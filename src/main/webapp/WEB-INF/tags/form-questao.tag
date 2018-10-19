@@ -7,7 +7,12 @@
 <%@attribute name="materias" type="java.util.List" %>
 <%@attribute name="fasesDeEnsino" type="java.util.List" %>
 
-<div class="row">
+<div id="js-form-questao" class="row"
+     data-questao="<lc:PrintSafe json="${questao}"/>"
+     data-disciplinas="<lc:PrintSafe json="${disciplinas}"/>"
+     data-materias="<lc:PrintSafe json="${materias}"/>"
+     data-fases-de-ensino="<lc:PrintSafe json="${fasesDeEnsino}"/>"
+>
     <div class="col">
 
         <div class="row mb-3">
@@ -18,14 +23,14 @@
                 <div class="custom-control custom-radio">
                     <input type="radio" id="tipo-objetiva" name="tipo-de-questao"
                            class="custom-control-input"
-                        <c:if test="${questao.tipoDeQuestaoEnum.toString() == 'OBJETIVA'}">checked</c:if>
+                           :value="tipos.objetiva"
                     >
                     <label class="custom-control-label" for="tipo-objetiva">Objetiva</label>
                 </div>
                 <div class="custom-control custom-radio">
                     <input type="radio" id="tipo-discursiva" name="tipo-de-questao"
                            class="custom-control-input"
-                           <c:if test="${questao.tipoDeQuestaoEnum.toString()== 'DISCURSIVA'}">checked</c:if>
+                           :value="tipos.discursiva"
                     >
                     <label class="custom-control-label" for="tipo-discursiva">Discursiva</label>
                 </div>
@@ -46,7 +51,7 @@
                                 <c:if test="${questao.disciplina == disciplina}">
                                     selected
                                 </c:if>
-                            >
+                        >
                                 ${disciplina.nome}
                         </option>
                     </c:forEach>
@@ -96,14 +101,14 @@
                 <div class="col">
 
                     <input type="number" id="nivel-da-questao" name="nivel-da-questao" class="form-control"
-                           <c:choose>
-                                <c:when test="${questao.nivel > 0}">
-                                    value="${questao.nivel}"
-                                </c:when>
-                                <c:when test="${questao.nivel == null}">
-                                    value="0"
-                                </c:when>
-                           </c:choose>
+                    <c:choose>
+                    <c:when test="${questao.nivel > 0}">
+                           value="${questao.nivel}"
+                    </c:when>
+                    <c:when test="${questao.nivel == null}">
+                           value="0"
+                    </c:when>
+                    </c:choose>
 
                            max="10" min="0" step="0.25">
                 </div>
@@ -153,7 +158,7 @@
                                            id="radio-opcao-1"
                                            name="opcao-de-questao"
                                            class="custom-control-input"
-                                            <c:if test="${opcao.value}">checked</c:if>
+                                           <c:if test="${opcao.value}">checked</c:if>
                                     >
                                     <label class="custom-control-label" for="radio-opcao-1"></label>
                                 </div>
