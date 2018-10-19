@@ -83,7 +83,7 @@ public class DBTestService {
                 true,
                 faseDeEnsino1,
                 disciplina1,
-                Arrays.asList(materia1, materia2),
+                Arrays.asList(materia1),
                 TipoDeQuestao.DISCURSIVA,
                 (float) 1.5,
                 "Calcule x+2=3"
@@ -97,14 +97,14 @@ public class DBTestService {
                 Arrays.asList(materia1, materia2),
                 TipoDeQuestao.DISCURSIVA,
                 (float) 3.5,
-                "Calcule x+2=3"
+                "Calcule f(x)=x+2=3 a g(x)=5 . f(x)"
         );
         questao2.setEspacos(5);
         Questao questao3 = new Questao(
                 professor2,
                 true,
                 faseDeEnsino1,
-                disciplina1,
+                disciplina2,
                 Collections.singletonList(materia4),
                 TipoDeQuestao.OBJETIVA,
                 (float) 2.5,
@@ -143,14 +143,14 @@ public class DBTestService {
         propostaDeInvalidacaoRepository.save(propostaDeInvalidacao1);
 
 
-        Teste teste1 = new Teste(
-                "Funções de primeiro e segundo graus",
-                professor1,
-                faseDeEnsino1,
-                disciplina1,
-                Arrays.asList(questao1, questao2)
-        );
-        testeRepository.save(teste1);
+//        Teste teste1 = new Teste(
+//                "Funções de primeiro e segundo graus",
+//                professor1,
+//                faseDeEnsino1,
+//                disciplina1,
+//                Arrays.asList(questao1, questao2)
+//        );
+//        testeRepository.save(teste1);
 
     }
 }

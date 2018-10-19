@@ -30,7 +30,7 @@
 
                 <div class="col">
                     <label for="js-materias" class="sr-only">Selcione uma Matéria</label>
-                    <select name="materias" id="js-materias" class="custom-select">
+                    <select name="materias" id="js-materias" class="custom-select" @change="setMateria">
 
                         <option selected v-if="materias.length">Selecione uma matéria</option>
                         <option selected v-else="materias.length">---</option>
@@ -40,16 +40,19 @@
 
                 <div class="col text-center">
                     <button class="btn btn-primary" @click="retriveQuestions">Procurar</button>
-                    <a class="btn btn-primary" href="${pageContext.request.contextPath}/questoes/procurar">Procurar</a>
                 </div>
 
                 <div class="col text-center">
-                    <a class="btn btn-secondary" href="${pageContext.request.contextPath}/questoes/criar/">Criar
-                        Questão</a>
+                    <a class="btn btn-secondary" href="${pageContext.request.contextPath}/questoes/criar/">
+                        Criar Questão
+                    </a>
                 </div>
             </div>
 
-            <div id="js-tabela-questoes" class="m3 border p-3">
+            <div v-if="questoes.length < 1" class="alert alert-info text-center">
+                Nenhuma questão encontrada para seleção
+            </div>
+            <div v-else id="js-tabela-questoes" class="m3 border p-3">
                 <tp:table_dark>
                     <jsp:attribute name="header">
                         <td>ID</td>
@@ -68,11 +71,11 @@
                             <td>{{questao.id}}</td>
                             <td>
                                 <span v-if="questao.publica">Sim</span>
-                                <span v-else="questao.publica">Não</span>
+                                <span v-else>Não</span>
                             </td>
                             <td>
                                 <span v-if="questao.invalidada">Sim</span>
-                                <span v-else="questao.invalidada">Não</span>
+                                <span v-else>Não</span>
                             </td>
                             <td>{{questao.enunciado}}</td>
                             <td>{{questao.tipoDeQuestaoEnum}}</td>
