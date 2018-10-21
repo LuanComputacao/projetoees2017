@@ -1,4 +1,4 @@
-var moment = require('momentjs');
+let moment = require('momentjs');
 import Vuex from 'vuex';
 
 export const OBJETIVA = "OBJETIVA";
@@ -15,7 +15,8 @@ export const GET_MATERIA = "getMateria";
 export const SET_QUESTAO = "setQuestao";
 export const SET_QUESTAO_DISCIPLINA = "setQuestaoDisciplina";
 export const SET_QUESTAO_ENUNCIADO = "setQuestaoEnunciado";
-
+export const SET_QUESTAO_ESPACOS = "setQuestaoEspacos";
+export const SET_QUESTAO_NIVEL = "setQuestaoNivel";
 export const SET_QUESTAO_TIPO = "setQuestaoTipo";
 
 export let store = new Vuex.Store({
@@ -54,10 +55,17 @@ export let store = new Vuex.Store({
         }
     },
     mutations: {
-        [SET_DISCIPLINA](state, disciplinaId) {
-            let disciplina = state.disciplinas.find(x => x.id === disciplinaId);
-            state.disciplina = disciplina;
-            state.questao.disciplina = disciplina;
+        [SET_DISCIPLINA](state, event) {
+            let disciplinaId = parseInt(event.target.value);
+            if (!isNaN(disciplinaId)) {
+                let disciplina = state.disciplinas.find(x => x.id === disciplinaId);
+                state.disciplina = disciplina;
+                state.materias = state.disciplina.materias;
+                state.questao.disciplina = disciplina;
+            } else {
+                state.disciplina = {};
+                state.questao.disciplina = {};
+            }
         },
         [SET_DISCIPLINAS](state, disciplinas) {
             state.disciplinas = disciplinas;
@@ -84,10 +92,16 @@ export let store = new Vuex.Store({
         [SET_QUESTAO_ENUNCIADO](state, enunciado) {
             state.questao.enunciado = enunciado
         },
+        [SET_QUESTAO_ESPACOS](state, espacos) {
+            state.questao.espacos = espacos;
+        },
         [SET_QUESTAO_DISCIPLINA](state, disciplina) {
             console.log(disciplina);
             state.disciplina = disciplina;
             state.questao.disciplina = disciplina;
+        },
+        [SET_QUESTAO_NIVEL](state, nivel) {
+            state.questao.nivel = nivel;
         },
         [SET_QUESTAO_TIPO](state, tipo) {
             state.questao.tipo = tipo;
