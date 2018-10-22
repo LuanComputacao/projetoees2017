@@ -17,6 +17,7 @@ export const SET_QUESTAO_DISCIPLINA = "setQuestaoDisciplina";
 export const SET_QUESTAO_ENUNCIADO = "setQuestaoEnunciado";
 export const SET_QUESTAO_ESPACOS = "setQuestaoEspacos";
 export const SET_QUESTAO_NIVEL = "setQuestaoNivel";
+export const SET_QUESTAO_OPCOES = "setQuestaoOpcoes";
 export const SET_QUESTAO_TIPO = "setQuestaoTipo";
 
 export let store = new Vuex.Store({
@@ -29,17 +30,18 @@ export let store = new Vuex.Store({
         tipos: {objetiva: OBJETIVA, discursiva: DISCURSIVA},
         questao: {
             id: 0,
-            criado: '',
             atualizado: '',
+            autor: '',
+            criado: '',
+            disciplina: '',
             enunciado: '',
             espacos: 0,
-            invalidada: false,
-            nivel: 0.0,
-            publica: false,
-            autor: '',
-            disciplina: '',
-            materias: {},
             faseDeEnsino: '',
+            invalidada: false,
+            materias: {},
+            nivel: 0.0,
+            opcoes: {},
+            publica: false,
             tipo: '',
         }
     },
@@ -76,17 +78,18 @@ export let store = new Vuex.Store({
         },
         [SET_QUESTAO](state, questao) {
             state.questao.id = questao.id;
-            state.questao.criado = moment(questao.criadoEm, 'DD-MM-YYYY hh:mm:ss').format('LL');
             state.questao.atualizado = moment(questao.atualizadoEm, 'DD-MM-YYYY hh:mm:ss').format('LL');
+            state.questao.autor = questao.autor;
+            state.questao.criado = moment(questao.criadoEm, 'DD-MM-YYYY hh:mm:ss').format('LL');
+            state.questao.disciplina = questao.disciplina;
             state.questao.enunciado = questao.enunciado;
             state.questao.espacos = questao.espacos;
-            state.questao.invalidada = questao.invalidada;
-            state.questao.nivel = parseFloat(questao.nivel);
-            state.questao.publica = questao.publica;
-            state.questao.autor = questao.autor;
-            state.questao.disciplina = questao.disciplina;
-            state.questao.materias = questao.materias;
             state.questao.faseDeEnsino = questao.faseDeEnsino;
+            state.questao.invalidada = questao.invalidada;
+            state.questao.materias = questao.materias;
+            state.questao.nivel = parseFloat(questao.nivel);
+            state.questao.opcoes = questao.opcoes;
+            state.questao.publica = questao.publica;
             state.questao.tipo = questao.tipoDeQuestaoEnum;
         },
         [SET_QUESTAO_ENUNCIADO](state, enunciado) {
@@ -96,12 +99,17 @@ export let store = new Vuex.Store({
             state.questao.espacos = espacos;
         },
         [SET_QUESTAO_DISCIPLINA](state, disciplina) {
-            console.log(disciplina);
             state.disciplina = disciplina;
             state.questao.disciplina = disciplina;
         },
         [SET_QUESTAO_NIVEL](state, nivel) {
             state.questao.nivel = nivel;
+        },
+        [SET_QUESTAO_OPCOES](state, event){
+            state.questao.opcoes = state.questao.opcoes.map(x =>{
+                x.value = (x.id === parseInt(event.target.value));
+                return x;
+            });
         },
         [SET_QUESTAO_TIPO](state, tipo) {
             state.questao.tipo = tipo;
@@ -110,7 +118,6 @@ export let store = new Vuex.Store({
             state.questao.faseDeEnsino = faseDeEnsino;
         },
         [SET_FASES_DE_ENSINO](state, fasesDeEnsino) {
-            console.log(fasesDeEnsino);
             state.fasesDeEnsino = fasesDeEnsino;
         }
     }
