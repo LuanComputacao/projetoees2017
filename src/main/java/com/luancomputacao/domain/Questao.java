@@ -70,11 +70,13 @@ public class Questao implements Serializable {
     private FaseDeEnsino faseDeEnsino;
 
     @OneToMany(mappedBy = "questao")
-    @JsonBackReference
+    @JsonManagedReference
+    @JsonProperty("opcoes")
     private Collection<OpcaoDeQuestao> opcoesDeQuestao;
 
     @OneToMany(mappedBy = "questao")
     @JsonBackReference
+    @JsonProperty("propostas-de-invalidacao")
     private Collection<PropostaDeInvalidacao> propostasDeInvalidacao;
 
     @OneToMany(mappedBy = "professor")

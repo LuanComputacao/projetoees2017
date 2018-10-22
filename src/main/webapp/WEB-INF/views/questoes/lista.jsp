@@ -9,7 +9,7 @@
         <div id="js-search-questoes"
              data-questoes="<ct:PrintSafe json="${questoes}"/>"
              data-disciplinas="<ct:PrintSafe json="${disciplinas}"/>"
-             data-questoes-api="${pageContext.request.contextPath}/api/questaos/"
+             data-questoes-api="${pageContext.request.contextPath}/api/questoes/"
         >
             <div class="row pt-3 pb-3 text-center">
                 <div class="col">

@@ -14,7 +14,7 @@
      data-materias="<lc:PrintSafe json="${materias}"/>"
      data-fases-de-ensino="<lc:PrintSafe json="${fasesDeEnsinoJSON}"/>"
 >
-    <div class="row">
+    <div v-if="questao.id > 0" class="row">
         <div class="col-auto">
             <div class="alert alert-dark">
                 <div class="row">
@@ -22,9 +22,9 @@
                     <span v-if="questao.invalidada">SIM</span>
                     <span v-else>NÃO</span>
                 </div>
-                <div class="row"><strong class="text-info">Autor:</strong>{{questao.autor.nome}}</div>
-                <div class="row"><strong class="text-info">Data de criação:</strong>{{questao.criado}}</div>
-                <div class="row"><strong class="text-info">Data de atualização:</strong>{{questao.atualizado}}</div>
+                <div class="row"><strong class="text-info">Autor:</strong>{{autor.nome}}</div>
+                <div class="row"><strong class="text-info">Data de criação:</strong>{{questao.criadoEm}}</div>
+                <div class="row"><strong class="text-info">Data de atualização:</strong>{{questao.atualizadoEm}}</div>
 
             </div>
         </div>
@@ -43,7 +43,7 @@
                                 <input type="radio" id="tipo-objetiva" name="tipo-de-questao"
                                        class="custom-control-input"
                                        :value="tipos.objetiva"
-                                       v-model="tipo"
+                                       v-model="questao.tipoDeQuestaoEnum"
                                 >
                                 <label class="custom-control-label" for="tipo-objetiva">Objetiva</label>
                             </div>
@@ -51,7 +51,7 @@
                                 <input type="radio" id="tipo-discursiva" name="tipo-de-questao"
                                        class="custom-control-input"
                                        :value="tipos.discursiva"
-                                       v-model="tipo"
+                                       v-model="questao.tipoDeQuestaoEnum"
                                 >
                                 <label class="custom-control-label" for="tipo-discursiva">Discursiva</label>
                             </div>
@@ -61,12 +61,15 @@
 
                     <div class="row mb-3">
                         <div class="col-auto">
-                            Disciplina:
+                            <label for="disciplina">Disciplina:</label>
                         </div>
                         <div class="col">
-                            <select class="custom-select" @change="setDisciplina">
-                                <option selected>Selecione uma Disciplina</option>
-                                <option v-for="disciplina in disciplinas" :value="disciplina.id">{{disciplina.nome}}
+                            <select id="disciplina" class="custom-select" @change="setLDisciplina">
+                                <option>Selecione uma Disciplina</option>
+                                <option :selected="questao.disciplina.id == disciplina.id"
+                                        v-for="disciplina in disciplinas"
+                                        :value="disciplina.id">
+                                    {{disciplina.nome}}
                                 </option>
                             </select>
                         </div>
@@ -74,12 +77,14 @@
 
                     <div class="row mb-3">
                         <div class="col-auto">
-                            Matéria:
+                            <label for="materia">Matéria:</label>
                         </div>
                         <div class="col">
-                            <select class="custom-select" @change="setMateria">
-                                <option selected>Selecione uma Disciplina</option>
-                                <option v-for="materia in materias" :value="materia.id">{{materia.nome}}</option>
+                            <select multiple id="materia" class="custom-select" @change="setMaterias">
+                                <option value="">Selecione uma Disciplina</option>
+                                <option :selected="meteriasSelecionadas.indexOf(materia.id) > -1 "
+                                        v-for="materia in lDisciplina.materias"
+                                        :value="materia.id">{{materia.nome}}</option>
                             </select>
                         </div>
                     </div>
@@ -92,7 +97,12 @@
                             </label>
                             <select class="custom-select" id="fase-de-ensino-da-questao" @change="setFaseDeEnsino">
                                 <option selected>Selecione uma Fase de Ensino</option>
-                                <option v-for="fase in fasesDeEnsino" :value="fase.id">{{fase.nome}}</option>
+                                <option :selected="fase.id === questao.faseDeEnsino.id"
+                                        v-for="fase in fasesDeEnsino"
+                                        :value="fase.id"
+                                >
+                                    {{fase.nome}}
+                                </option>
                             </select>
                         </div>
 
@@ -104,7 +114,7 @@
                             </div>
                             <div class="col">
                                 <input type="number" id="nivel-da-questao" name="nivel-da-questao" class="form-control"
-                                       v-model="nivel"
+                                       v-model="questao.nivel"
                                        max="10" min="0" step="0.25">
                             </div>
                         </div>
@@ -124,15 +134,14 @@
                                     name="enunciado-da-questao"
                                     class="form-control"
                                     rows="5"
-                                    v-model="enunciado"
+                                    v-model="questao.enunciado"
                             >
-                                {{enunciado}}
                             </textarea>
                         </div>
                     </div>
 
 
-                    <div v-if="tipo == tipos.discursiva" class="row mb-3">
+                    <div v-if="questao.tipoDeQuestaoEnum == tipos.discursiva" class="row mb-3">
                         <div class="col-auto pt-1">
                             <label for="espacos-da-questao">Espaços:</label>
                         </div>
@@ -147,7 +156,7 @@
                         </div>
                     </div>
 
-                    <div v-else-if="tipo == tipos.objetiva" class="js-opcoes-questao-objetiva">
+                    <div v-else-if="questao.tipoDeQuestaoEnum == tipos.objetiva" class="js-opcoes-questao-objetiva">
                         <div class="row mb-3">
                             <div class="col">Opções</div>
                         </div>

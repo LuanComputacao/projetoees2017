@@ -9,7 +9,7 @@
         <div id="">
             <form action="${pageContext.request.contextPath}/questoes/criar/" method="post">
                 <tp:form-questao
-                        fasesDeEnsino="${fasesDeEnsino}"
+                        fasesDeEnsinoJSON="${fasesDeEnsino}"
                         disciplinas="${disciplinas}"
                         materias="${materias}"
                 >

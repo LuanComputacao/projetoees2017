@@ -14,9 +14,6 @@ import java.util.Arrays;
 @EnableJpaAuditing
 public class MrXavierApplication implements CommandLineRunner {
 
-    @Autowired
-    private ProfessorRepository professorRepository;
-
     public static void main(String[] args) {
         SpringApplication.run(MrXavierApplication.class, args);
     }

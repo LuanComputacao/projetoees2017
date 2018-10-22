@@ -4,11 +4,13 @@ import com.luancomputacao.domain.Questao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
+@RepositoryRestResource(path = "questoes")
 public interface QuestaoRepository extends JpaRepository<Questao, Integer> {
 
     List<Questao> findByAutorCpf(@Param("cpf") String cpf);

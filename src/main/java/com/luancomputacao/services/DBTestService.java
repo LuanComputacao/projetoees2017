@@ -118,11 +118,11 @@ public class DBTestService {
         ));
 
 
-        OpcaoDeQuestao opcaoDeQuestao3_1 = new OpcaoDeQuestao(questao3, "Sujeito é a pessoa principal de uma oração");
-        OpcaoDeQuestao opcaoDeQuestao3_2 = new OpcaoDeQuestao(questao3, "Predicado é a pessoa principal de uma oração");
-        OpcaoDeQuestao opcaoDeQuestao3_3 = new OpcaoDeQuestao(questao3, "Verbo é a pessoa principal de uma oração");
-        OpcaoDeQuestao opcaoDeQuestao3_4 = new OpcaoDeQuestao(questao3, "Lalala é a pessoa principal de uma oração");
-        OpcaoDeQuestao opcaoDeQuestao3_5 = new OpcaoDeQuestao(questao3, "Bla Bla Bla é a pessoa principal de uma oração");
+        OpcaoDeQuestao opcaoDeQuestao3_1 = new OpcaoDeQuestao(questao3, "Sujeito é a pessoa principal de uma oração", false);
+        OpcaoDeQuestao opcaoDeQuestao3_2 = new OpcaoDeQuestao(questao3, "Predicado é a pessoa principal de uma oração", false);
+        OpcaoDeQuestao opcaoDeQuestao3_3 = new OpcaoDeQuestao(questao3, "Verbo é a pessoa principal de uma oração", false);
+        OpcaoDeQuestao opcaoDeQuestao3_4 = new OpcaoDeQuestao(questao3, "Lalala é a pessoa principal de uma oração", true);
+        OpcaoDeQuestao opcaoDeQuestao3_5 = new OpcaoDeQuestao(questao3, "Bla Bla Bla é a pessoa principal de uma oração", false);
 
         opcaoDeQuestaoRepository.saveAll(Arrays.asList(
                 opcaoDeQuestao3_1,
