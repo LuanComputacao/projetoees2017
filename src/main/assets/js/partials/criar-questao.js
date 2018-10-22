@@ -13,6 +13,7 @@ import {
     SET_QUESTAO_ENUNCIADO,
     SET_QUESTAO_ESPACOS,
     SET_QUESTAO_NIVEL,
+    SET_QUESTAO_OPCOES,
     SET_QUESTAO_TIPO,
     store,
 } from '../stores/questao.store';
@@ -68,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 set(nivel) {
                     this[SET_QUESTAO_NIVEL](nivel)
                 }
-            }
+            },
         },
         methods: {
             ...mapMutations([
@@ -78,12 +79,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 SET_FASES_DE_ENSINO,
                 SET_MATERIA,
                 SET_QUESTAO,
-                SET_QUESTAO_TIPO,
+                SET_QUESTAO_DISCIPLINA,
                 SET_QUESTAO_ENUNCIADO,
                 SET_QUESTAO_ESPACOS,
-                SET_QUESTAO_DISCIPLINA,
                 SET_QUESTAO_NIVEL,
+                SET_QUESTAO_OPCOES,
+                SET_QUESTAO_TIPO,
             ]),
+            ...mapMutations({
+                "setOpcao": SET_QUESTAO_OPCOES
+            })
         }
     });
 });
