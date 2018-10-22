@@ -73,8 +73,22 @@ export let store = new Vuex.Store({
             state.disciplinas = disciplinas;
         },
         [SET_MATERIA](state, materia) {
-            state.materia = materia;
-            state.questao.materia = materia;
+            // Recupera os Ids das materias
+            let materiasIds = [];
+            let opcoesSelecionadas = materia.target.selectedOptions;
+            for(let i=0; i < opcoesSelecionadas.length; i++) {
+                let selectedValue = parseInt(opcoesSelecionadas.item(i).value);
+                if(!isNaN(selectedValue)){
+                    materiasIds.push(selectedValue);
+                }
+            }
+
+            let materiasSelecionadas = state.disciplina.materias.filter(x => materiasIds.indexOf(x.id) > -1);
+            console.log(materiasSelecionadas);
+
+            state.questao.materias = state.disciplina.materias.filter(x => materiasIds.indexOf(x.id) > -1)
+            // state.materia = materia;
+            // state.questao.materia = materia;
         },
         [SET_QUESTAO](state, questao) {
             state.questao.id = questao.id;

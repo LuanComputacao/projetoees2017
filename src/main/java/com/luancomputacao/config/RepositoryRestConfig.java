@@ -17,7 +17,6 @@ public class RepositoryRestConfig extends RepositoryRestConfigurerAdapter {
                 Questao.class,
                 Disciplina.class,
                 Materia.class
-
         );
     }
 }
