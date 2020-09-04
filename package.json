@@ -38,7 +38,7 @@
     "jwt-decode": "^2.2.0",
     "mini-css-extract-plugin": "^0.4.3",
     "moment": "~2.18.1",
-    "node-sass": "^4.9.3",
+    "node-sass": "^4.13.1",
     "postcss-loader": "^3.0.0",
     "precss": "^3.1.2",
     "purify-css": "^1.2.5",
